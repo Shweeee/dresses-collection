@@ -1,0 +1,1243 @@
+[
+  {
+    "id": "PROD-001",
+    "name": "Rose Satin Evening Gown",
+    "category": "Traditional Wear",
+    "description": "A statement gown with layered detailing, premium satin finish, and multiple color-ready styling options for festive evenings.",
+    "price": 1699,
+    "discountPrice": 1199,
+    "stock": 20,
+    "sku": "ROSE-SET-07",
+    "images": [
+      "http://localhost:3000/uploads/products/product-1/WhatsApp Image 2026-09-17 at 7.45.26 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-1/WhatsApp Image 2026-09-17 at 7.45.26 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-1/WhatsApp Image 2026-09-17 at 7.45.27 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-1/WhatsApp Image 2026-09-17 at 7.45.26 PM (1).jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Maroon",
+      "Purple",
+      "Orange"
+    ],
+    "details": {
+      "material": "Nc moss putti with real mirror and pearl work lace neck and sleeves and tassels complete lining with heavy micro",
+      "color": "Rose",
+      "size": "S-36, M-38, L-40, XL-42, XXL-44, 3XL-46",
+      "occasion": "Festive Evening",
+      "fit": "Slim Fit"
+    },
+    "createdAt": "2026-09-20T10:00:00.000Z",
+    "updatedAt": "2026-09-20T10:00:00.000Z"
+  },
+  {
+    "id": "PROD-002",
+    "name": "Premium Crop Top & Flared Skirt Set",
+    "category": "Traditional Wear",
+    "description": "Exclusive arrival. Package contains crop top, blouse and dupatta with elegant premium bead work and a shimmering sequin net skirt.",
+    "price": 1799,
+    "discountPrice": 1399,
+    "stock": 20,
+    "sku": "CROP-SET-02",
+    "images": [
+      "http://localhost:3000/uploads/products/product-2/WhatsApp Image 2026-09-20 at 11.09.11 AM.jpeg",
+      "http://localhost:3000/uploads/products/product-2/WhatsApp Image 2026-09-20 at 11.13.59 AM.jpeg",
+      "http://localhost:3000/uploads/products/product-2/WhatsApp Image 2026-09-20 at 11.14.00 AM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-2/WhatsApp Image 2026-09-20 at 11.09.11 AM.jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "Emerald Green",
+      "Wine Red",
+      "Royal Orange"
+    ],
+    "details": {
+      "package": "Crop Top, Skirt and Dupatta",
+      "skirtMaterial": "Premium space silk with all-over sequins work",
+      "skirtLength": "Approx. 42-44 inches",
+      "cropTopLength": "15 inches",
+      "sleeveLength": "10 inches",
+      "lining": "Soft 2-layer inner lining (Crepe)",
+      "border": "Heavy bead lace border",
+      "flare": "3.5",
+      "occasion": "Festive / Traditional Wear",
+      "status": "Ready to dispatch"
+    },
+    "createdAt": "2026-09-20T11:00:00.000Z",
+    "updatedAt": "2026-09-20T13:18:35.745Z"
+  },
+  {
+    "id": "PROD-003",
+    "name": "Blooming Vichitra Silk Gown with Dupatta & Belt",
+    "category": "Traditional Wear",
+    "description": "Launching exclusive party wear draping style gown outfit with premium blooming vichitra silk, bead work on yoke, dupatta and belt for multiple styling options.",
+    "price": 1499,
+    "discountPrice": 1099,
+    "stock": 20,
+    "sku": "BLOOM-GOWN-03",
+    "images": [
+      "http://localhost:3000/uploads/products/product-3/WhatsApp Image 2026-09-27 at 3.58.43 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-3/WhatsApp Image 2026-09-27 at 3.58.43 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-3/WhatsApp Image 2026-09-27 at 3.58.44 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-3/WhatsApp Image 2026-09-27 at 3.58.44 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-3/WhatsApp Image 2026-09-27 at 3.58.43 PM (1).jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Blue",
+      "Maroon",
+      "Red",
+      "Lavender"
+    ],
+    "details": {
+      "fabric": "Premium blooming vichitra silk",
+      "dupattaLength": "2.5 mtrs",
+      "gownLength": "55 inches",
+      "package": "Gown + Dupatta + Belt",
+      "lining": "Complete crepe lining attached",
+      "work": "Sequence and beads work",
+      "occasion": "Festive and function wear",
+      "status": "Selling best quality"
+    },
+    "createdAt": "2026-09-20T08:00:00.000Z",
+    "updatedAt": "2026-09-20T08:00:00.000Z"
+  },
+  {
+    "id": "PROD-005",
+    "name": "Gown with Dupatta",
+    "category": "Gowns",
+    "description": "Top trending festival collection featuring sequins embroidery gown with coat and dupatta for glamour and elegance in the festive season.",
+    "price": 1799,
+    "discountPrice": 1299,
+    "stock": 20,
+    "sku": "MK-243",
+    "images": [
+      "http://localhost:3000/uploads/products/product-5/WhatsApp Image 2026-09-19 at 7.41.38 AM.jpeg",
+      "http://localhost:3000/uploads/products/product-5/WhatsApp Image 2026-09-19 at 7.41.39 AM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-5/WhatsApp Image 2026-09-19 at 7.41.38 AM.jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Royal Pink",
+      "Royal Blue"
+    ],
+    "details": {
+      "gownLength": "54+ inches",
+      "shoulder": "15 inches",
+      "flare": "3.5 meters",
+      "lining": "Micro Cotton",
+      "kotiFabric": "Soft Net With Sequins Embroidery Work",
+      "dupattaFabric": "NC MOSS BUTTY WITH 2 SIDE LACE BORDER (2.10)",
+      "package": "Gown + Dupatta",
+      "status": "Ready for innovation"
+    },
+    "createdAt": "2026-09-19T07:00:00.000Z",
+    "updatedAt": "2026-09-19T07:00:00.000Z"
+  },
+  {
+    "id": "PROD-006",
+    "name": "AV Studio - SATYA Premium South Salsa Silk Gown",
+    "category": "Gowns",
+    "description": "Grand launch premium south salsa silk gown with dupatta, foil work detailing, and elegant festive finishing.",
+    "price": 1899,
+    "discountPrice": 1499,
+    "stock": 20,
+    "sku": "AV-285",
+    "images": [
+      "http://localhost:3000/uploads/products/product-6/WhatsApp Image 2026-09-27 at 4.05.02 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-6/WhatsApp Image 2026-09-27 at 4.05.03 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-6/WhatsApp Image 2026-09-27 at 4.05.03 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-6/WhatsApp Image 2026-09-27 at 4.05.02 PM.jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Yellow",
+      "Sky Blue",
+      "Pink"
+    ],
+    "details": {
+      "fabric": "Premium South Salsa Silk",
+      "length": "52 inches",
+      "work": "Foil Work",
+      "flare": "4 Meter",
+      "lining": "Heavy Creap",
+      "dupatta": "South Salsa Silk Dupatta 2 Meter",
+      "status": "Ready stock available"
+    },
+    "createdAt": "2026-09-17T08:00:00.000Z",
+    "updatedAt": "2026-09-17T08:00:00.000Z"
+  },
+  {
+    "id": "PROD-008",
+    "name": "Soft Net With Sequins Embroidery Work",
+    "category": "Traditional Wear",
+    "description": "South special edition dress with a rich jet-black solid base and printed accents, designed for an elegant royal ethnic look with comfort.",
+    "price": 1899,
+    "discountPrice": 1499,
+    "stock": 20,
+    "sku": "REVATI-008",
+    "images": [
+      "http://localhost:3000/uploads/products/product-8/WhatsApp Image 2026-09-12 at 12.14.55 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-8/WhatsApp Image 2026-09-12 at 12.14.56 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-8/WhatsApp Image 2026-09-12 at 12.14.56 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-8/WhatsApp Image 2026-09-12 at 12.14.55 PM.jpeg",
+    "sizes": [
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Silk Green",
+      "Silk Pink",
+      "Silk White"
+    ],
+    "details": {
+      "material": "Vichitra Silk",
+      "lining": "Complete lining",
+      "length": "54+ inches",
+      "Shoulder": "15+ inches",
+      "flare": "7 meters",
+      "neckline": "Elegant round neck",
+      "sizeChart": "M-38, L-40, XL-42, XXL-44",
+      "shipping": "Free ship"
+    },
+    "createdAt": "2026-09-12T12:00:00.000Z",
+    "updatedAt": "2026-09-12T12:00:00.000Z"
+  },
+  {
+    "id": "PROD-010",
+    "name": "Signature Series Cape Top with Skirt & Dupatta",
+    "category": "Traditional Wear",
+    "description": "Unveiling our stunning cape top in radiant colours, paired with a skirt and dupatta for wedding functions, parties, and festive celebrations. This standout ensemble delivers elegance and comfort for any special occasion.",
+    "price": 1399,
+    "discountPrice": 1099,
+    "stock": 20,
+    "sku": "TRD-010",
+    "images": [
+      "http://localhost:3000/uploads/products/product-10/WhatsApp Image 2026-09-07 at 11.41.55 AM.jpeg",
+      "http://localhost:3000/uploads/products/product-10/WhatsApp Image 2026-09-07 at 11.41.56 AM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-10/WhatsApp Image 2026-09-07 at 11.41.56 AM.jpeg",
+      "http://localhost:3000/uploads/products/product-10/WhatsApp Image 2026-09-07 at 11.41.57 AM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-10/WhatsApp Image 2026-09-07 at 11.41.57 AM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-10/WhatsApp Image 2026-09-07 at 11.41.57 AM.jpeg",
+      "http://localhost:3000/uploads/products/product-10/WhatsApp Image 2026-09-07 at 11.41.58 AM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-10/WhatsApp Image 2026-09-07 at 11.41.58 AM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-10/WhatsApp Image 2026-09-07 at 11.41.58 AM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-10/WhatsApp Image 2026-09-07 at 11.41.55 AM.jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "3XL",
+      "4XL",
+      "5XL",
+      "6XL"
+    ],
+    "colors": [
+      "Plum",
+      "White",
+      "Red",
+      "Green",
+      "Lime",
+      "Mulberry",
+      "Blue",
+      "Sky Blue",
+      "Lavendar"
+    ],
+    "details": {
+      "material": "Vichitra Silk",
+      "lining": "Complete lining",
+      "lehengaLength": "40 inches",
+      "capeTopLength": "48 inches",
+      "sleeveLength": "18 inches",
+      "neckline": "Sweet Heart",
+      "color": "Plum",
+      "fabricFeature": "Vichitra Fox that shine and texture",
+      "embroidery": "Finely crafted thread art",
+      "package": "Skirt, dupatta and cape top",
+      "shipping": "Free ship"
+    },
+    "createdAt": "2026-09-07T11:00:00.000Z",
+    "updatedAt": "2026-09-07T11:00:00.000Z"
+  },
+  {
+    "id": "PROD-011",
+    "name": "Premium Handwork Gown with Dupatta",
+    "category": "Traditional Wear",
+    "description": "Premium handwork gown with dupatta in premium rangoli silk fabric, heavy flair, original handwork, and rich festive finish for weddings and grand occasions.",
+    "price": 1599,
+    "discountPrice": 1199,
+    "stock": 20,
+    "sku": "TRD-011",
+    "images": [
+      "http://localhost:3000/uploads/products/product-11/WhatsApp Image 2026-09-05 at 9.36.43 AM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-11/WhatsApp Image 2026-09-05 at 9.36.43 AM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-11/WhatsApp Image 2026-09-05 at 9.36.45 AM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-11/WhatsApp Image 2026-09-05 at 9.36.43 AM (1).jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Rust Orange",
+      "Deep Blue",
+      "Silk Purple"
+    ],
+    "details": {
+      "fabric": "Premium Rangoli Silk",
+      "work": "Original Handwork",
+      "length": "52 inches",
+      "flare": "9-10 Meter",
+      "lining": "Heavy crepe with sleeve lining",
+      "dupatta": "Rangoli Silk Dupatta 2.10 Meter",
+      "color": "Wine Red",
+      "status": "Ready stock available"
+    },
+    "createdAt": "2026-09-05T09:00:00.000Z",
+    "updatedAt": "2026-09-05T09:00:00.000Z"
+  },
+  {
+    "id": "PROD-013",
+    "name": "Festival Kurthi Vel Design",
+    "category": "Traditional Wear",
+    "description": "👉👗💥Launching New Festival Kurthi Vel Design\n\n👗Wear the Power of Murugan Vel. ✨👗\n🔸Fabric details😘\nJacquard Silk cotton\nComplete lining With Back Side pattern And Dori Or Funka\nDupatta Length: 2.25 Meter\nKurti Length - 46+ inches\nWeight: 430g\n\nSize: S(36), M(38), L(40), XL(42), XXL(44), 3XL(46)\n\nPrice: ₹999 | Free shipping\n\n4 Colour Available\n\n💕One Level Up💕\n👌A One Quality👌🛍️💕",
+    "price": 1199,
+    "discountPrice": 899,
+    "stock": 20,
+    "sku": "KURTI-VEL-2414",
+    "images": [
+      "http://localhost:3000/uploads/products/products-13/WhatsApp Image 2026-09-27 at 1.25.24 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/products-13/WhatsApp Image 2026-09-27 at 1.25.24 PM.jpeg",
+      "http://localhost:3000/uploads/products/products-13/WhatsApp Image 2026-09-27 at 1.25.25 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/products-13/WhatsApp Image 2026-09-27 at 1.25.25 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/products-13/WhatsApp Image 2026-09-27 at 1.25.24 PM (1).jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "3XL"
+    ],
+    "colors": [
+      "Black",
+      "Red",
+      "Blue",
+      "Maroon"
+    ],
+    "details": {
+      "fabric": "Jacquard Silk Cotton",
+      "lining": "Complete lining with back side pattern and dori/funka",
+      "dupattaLength": "2.25 meter",
+      "kurtiLength": "46+ inches",
+      "weight": "430g",
+      "sizeChart": "S(36), M(38), L(40), XL(42), XXL(44), 3XL(46)",
+      "shipping": "Free shipping",
+      "occasion": "Festival wear",
+      "quality": "One level up quality",
+      "status": "Ready stock available"
+    },
+    "createdAt": "2026-09-20T20:00:00.000Z",
+    "updatedAt": "2026-09-20T20:00:00.000Z"
+  },
+  {
+    "id": "PROD-014",
+    "name": "Traditional Silk Cotton Kurti Set",
+    "category": "Traditional Wear",
+    "description": "Exclusive arrival. Launching traditional outfit with a stunning silk cotton kurti set featuring beautiful zari work, contrast border dupatta, and a refined festive finish for temple and festival wear.",
+    "price": 1199,
+    "discountPrice": 899,
+    "stock": 20,
+    "sku": "TRD-014",
+    "images": [
+      "http://localhost:3000/uploads/products/product-14/WhatsApp Image 2026-09-27 at 1.15.03 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-14/WhatsApp Image 2026-09-27 at 1.15.04 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-14/WhatsApp Image 2026-09-27 at 1.15.04 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-14/WhatsApp Image 2026-09-27 at 1.15.05 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-14/WhatsApp Image 2026-09-27 at 1.15.05 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-14/WhatsApp Image 2026-09-27 at 1.15.05 PM (3).jpeg",
+      "http://localhost:3000/uploads/products/product-14/WhatsApp Image 2026-09-27 at 1.15.05 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-14/WhatsApp Image 2026-09-27 at 1.15.06 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-14/WhatsApp Image 2026-09-27 at 1.15.06 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-14/WhatsApp Image 2026-09-27 at 1.15.03 PM.jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "3XL"
+    ],
+    "colors": [
+      "Green",
+      "Ink Blue",
+      "Brown",
+      "Purple",
+      "Blue",
+      "Sky Blue",
+      "Light Green",
+      "Lavendar",
+      "Red"
+    ],
+    "details": {
+      "fabric": "Premium Quality Silk Cotton",
+      "package": "Kurti + Dupatta",
+      "price": "600+ship",
+      "sizeChart": "S to 3XL",
+      "kurtiLength": "43 inches",
+      "dupattaLength": "2.25 mtrs",
+      "lining": "Complete crepe lining",
+      "occasion": "Temple and festival wear",
+      "quality": "Selling best quality",
+      "status": "Ready to dispatch"
+    },
+    "createdAt": "2026-09-27T13:15:00.000Z",
+    "updatedAt": "2026-09-27T13:15:00.000Z"
+  },
+  {
+    "id": "PROD-015",
+    "name": "Introducing New Super Trendy Traditional Outfit",
+    "category": "Traditional Wear",
+    "description": "This gown made from jacquard weaving zari butti fabric and soft silk dupatta with zari border. Stylish 3 color collection designed for festive wear with a graceful traditional look.",
+    "price": 1199,
+    "discountPrice": 999,
+    "stock": 18,
+    "sku": "TRD-015",
+    "images": [
+      "http://localhost:3000/uploads/products/product-15/WhatsApp Image 2026-09-27 at 1.16.23 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-15/WhatsApp Image 2026-09-27 at 1.16.23 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-15/WhatsApp Image 2026-09-27 at 1.16.24 PM (2).jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-15/WhatsApp Image 2026-09-27 at 1.16.23 PM (1).jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Red",
+      "Green",
+      "Purple"
+    ],
+    "details": {
+      "fabric": "Jacquard weaving zari butti fabric with soft silk dupatta and zari border",
+      "length": "51 inches",
+      "weight": "500 grm",
+      "price": "999+ship",
+      "sizeChart": "S M L XL XXL XXXL",
+      "colorVariation": "Stylish 3 color range",
+      "quality": "Be happy with quality",
+      "status": "Ready to dispatch",
+      "colorNote": "Color slightly different due to camera settings"
+    },
+    "createdAt": "2026-09-27T13:20:00.000Z",
+    "updatedAt": "2026-09-27T13:20:00.000Z"
+  },
+  {
+    "id": "PROD-016",
+    "name": "Floral Beadwork 3-Piece Space Silk Ethnic Ensemble",
+    "category": "Traditional Wear",
+    "description": "This 3-piece ethnic ensemble features delicate floral threadwork, beadwork, and vine embroidery across the fabric. With beautiful beadwork all over the top and dupatta, it is perfect for Haldi ceremonies, festive celebrations, and wedding functions.",
+    "price": 1799,
+    "discountPrice": 1499,
+    "stock": 18,
+    "sku": "TRD-016",
+    "images": [
+      "http://localhost:3000/uploads/products/product-16/WhatsApp Image 2026-09-27 at 2.34.39 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-16/WhatsApp Image 2026-09-27 at 2.34.40 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-16/WhatsApp Image 2026-09-27 at 2.34.40 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-16/WhatsApp Image 2026-09-27 at 2.34.39 PM.jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Yellow",
+      "Purple",
+      "Peach Pink"
+    ],
+    "details": {
+      "fabric": "Premium crinkled Me Space Silk",
+      "package": "3-piece ethnic ensemble",
+      "work": "Floral threadwork, beadwork, and vine embroidery",
+      "lining": "Complete lining",
+      "topLength": "28 inches",
+      "bottomLength": "40 inches",
+      "flare": "6.5 meters",
+      "neckline": "Unique neckline",
+      "sizeChart": "S(36), M(38), L(40), XL(42), XXL(44)",
+      "shipping": "Free shipping",
+      "occasion": "Haldi, festive celebrations, and wedding functions"
+    },
+    "createdAt": "2026-09-27T14:34:39.000Z",
+    "updatedAt": "2026-09-27T14:34:39.000Z"
+  },
+  {
+    "id": "PROD-017",
+    "name": "South Silk Flared Gown with Dupatta and Belt",
+    "category": "Traditional Wear",
+    "description": "Vibe your Diwali festival with this beautiful flared outfit: a premium South Silk gown with dupatta and belt, finished with a rich festive look.",
+    "price": 1699,
+    "discountPrice": 1399,
+    "stock": 20,
+    "sku": "TRD-017",
+    "images": [
+      "http://localhost:3000/uploads/products/product-17/WhatsApp Image 2026-09-27 at 3.54.43 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-17/WhatsApp Image 2026-09-27 at 3.54.43 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-17/WhatsApp Image 2026-09-27 at 3.54.44 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-17/WhatsApp Image 2026-09-27 at 3.54.44 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-17/WhatsApp Image 2026-09-27 at 3.54.43 PM (1).jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Deep Wine",
+      "Lavendar",
+      "Sky Blue",
+      "Peach Pink"
+    ],
+    "details": {
+      "fabric": "Premium South Silk",
+      "package": "Gown + Dupatta + Belt",
+      "length": "52 inches",
+      "flare": "4 meters",
+      "lining": "Heavy crepe lining",
+      "dupattaLength": "2.10 meters",
+      "sizeChart": "S, M, L, XL, XXL, 2XL, 3XL",
+      "price": "Price to be confirmed",
+      "quality": "Premium quality assured",
+      "occasion": "Diwali and festive wear"
+    },
+    "createdAt": "2026-09-27T15:54:43.000Z",
+    "updatedAt": "2026-09-27T15:54:43.000Z"
+  },
+  {
+    "id": "PROD-018",
+    "name": "Designer Tissue Butti Princess Midi Gown",
+    "category": "Gowns",
+    "description": "A designer princess party-wear midi gown crafted from premium dual-tone tissue with zari butti work. The back-side corset tie-up offers an adjustable fit for a graceful, queen-worthy look.",
+    "price": 999,
+    "discountPrice": 799,
+    "stock": 20,
+    "sku": "GWN-018",
+    "images": [
+      "http://localhost:3000/uploads/products/product-18/WhatsApp Image 2026-09-27 at 4.01.27 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-18/WhatsApp Image 2026-09-27 at 4.01.27 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-18/WhatsApp Image 2026-09-27 at 4.01.28 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-18/WhatsApp Image 2026-09-27 at 4.01.28 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-18/WhatsApp Image 2026-09-27 at 4.01.27 PM (1).jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Wine",
+      "Light Brown",
+      "Light Blue",
+      "Light Pink"
+    ],
+    "details": {
+      "fabric": "Premium dual-tone tissue with zari butti work",
+      "backDetail": "Corset tie-up for adjustable fitting",
+      "length": "47+ inches",
+      "flare": "3.5 meters",
+      "lining": "Complete crepe lining attached",
+      "shipping": "Shipping charges extra",
+      "occasion": "Party wear"
+    },
+    "createdAt": "2026-09-27T16:01:27.000Z",
+    "updatedAt": "2026-09-27T16:01:27.000Z"
+  },
+  {
+    "id": "PROD-019",
+    "name": "Embroidered Georgette Two-Piece Lehenga Set",
+    "category": "Traditional Wear",
+    "description": "A two-piece lehenga set in a rich, beautiful color, designed to turn heads at festive occasions. The blouse features an exquisite floral vine pattern embroidered in shimmering gold thread.",
+    "price": 1399,
+    "discountPrice": 999,
+    "stock": 20,
+    "sku": "TRD-019",
+    "images": [
+      "http://localhost:3000/uploads/products/product-19/WhatsApp Image 2026-09-27 at 4.10.15 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-19/WhatsApp Image 2026-09-27 at 4.10.15 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-19/WhatsApp Image 2026-09-27 at 4.10.15 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-19/WhatsApp Image 2026-09-27 at 4.10.16 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-19/WhatsApp Image 2026-09-27 at 4.10.16 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-19/WhatsApp Image 2026-09-27 at 4.10.16 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-19/WhatsApp Image 2026-09-27 at 4.10.15 PM (1).jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Pink",
+      "Blue",
+      "Red",
+      "Orange",
+      "Black",
+      "Coffee Brown"
+    ],
+    "details": {
+      "material": "Georgette",
+      "lining": "Complete lining",
+      "sleeveLength": "21+ inches",
+      "flare": "6.5+ meters",
+      "closure": "Back zip",
+      "embroidery": "Gold-thread floral vine embroidery on the blouse",
+      "sizeChart": "S(36), M(38), L(40), XL(42), XXL(44)",
+      "price": "1499 + shipping",
+      "package": "Two-piece lehenga set"
+    },
+    "createdAt": "2026-09-27T16:10:15.000Z",
+    "updatedAt": "2026-09-27T16:10:15.000Z"
+  },
+  {
+    "id": "PROD-020",
+    "name": "Fendy Silk Designer Gown with Sequence Dupatta and Pant",
+    "category": "Gowns",
+    "description": "Exclusive trending designer gown with heavy sequence embroidery-work dupatta. Fully stitched and ready to wear, paired with a micro-cotton pant for a complete festive outfit.",
+    "price": 1899,
+    "discountPrice": 1599,
+    "stock": 20,
+    "sku": "GWN-020",
+    "images": [
+      "http://localhost:3000/uploads/products/product-20/WhatsApp Image 2026-09-27 at 4.17.27 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-20/WhatsApp Image 2026-09-27 at 4.17.27 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-20/WhatsApp Image 2026-09-27 at 4.17.27 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-20/WhatsApp Image 2026-09-27 at 4.17.28 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-20/WhatsApp Image 2026-09-27 at 4.17.28 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-20/WhatsApp Image 2026-09-27 at 4.17.28 PM (3).jpeg",
+      "http://localhost:3000/uploads/products/product-20/WhatsApp Image 2026-09-27 at 4.17.28 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-20/WhatsApp Image 2026-09-27 at 4.17.29 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-20/WhatsApp Image 2026-09-27 at 4.17.29 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-20/WhatsApp Image 2026-09-27 at 4.17.27 PM (1).jpeg",
+    "sizes": [
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Dark Blue",
+      "Black",
+      "Red",
+      "Light Blue",
+      "Orange",
+      "White",
+      "Yellow",
+      "Pink",
+      "Purple"
+    ],
+    "details": {
+      "gownFabric": "Fendy silk",
+      "sleeves": "Full sleeves",
+      "inner": "Heavy micro cotton",
+      "gownLength": "49-50 inches",
+      "gownFlare": "4 meters",
+      "bottomFabric": "Micro cotton pant",
+      "bottomLength": "39-40 inches",
+      "dupattaFabric": "Fendy silk with sequence embroidery work",
+      "weight": "950 gm",
+      "stitching": "Fully stitched and ready to wear",
+      "shipping": "100",
+      "quality": "Premium quality"
+    },
+    "createdAt": "2026-09-27T16:17:27.000Z",
+    "updatedAt": "2026-09-27T16:17:27.000Z"
+  },
+  {
+    "id": "PROD-021",
+    "name": "Exclusive Festival Mirror-Work Maxi Gown",
+    "category": "Gowns",
+    "description": "Launching an exclusive festival and functional-wear maxi gown in premium Space Silk, featuring beautiful mirror handwork on the neck. This own-modeling photoshoot design is ready to dispatch.",
+    "price": 999,
+    "discountPrice": 799,
+    "stock": 20,
+    "sku": "GWN-021",
+    "images": [
+      "http://localhost:3000/uploads/products/product-21/WhatsApp Image 2026-09-27 at 4.21.28 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-21/WhatsApp Image 2026-09-27 at 4.21.28 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-21/WhatsApp Image 2026-09-27 at 4.21.29 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-21/WhatsApp Image 2026-09-27 at 4.21.29 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-21/WhatsApp Image 2026-09-27 at 4.21.28 PM (1).jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Brown",
+      "Blue",
+      "Purple",
+      "Brown"
+    ],
+    "details": {
+      "designNumber": "2414",
+      "fabric": "Premium Space Silk",
+      "work": "Mirror handwork on neck",
+      "gownLength": "46+ inches",
+      "gownFlare": "4 meters",
+      "lining": "Complete crepe lining attached",
+      "sizeChart": "S to 3XL",
+      "price": "899, free shipping",
+      "status": "Ready to dispatch",
+      "quality": "Best quality"
+    },
+    "createdAt": "2026-09-27T16:21:28.000Z",
+    "updatedAt": "2026-09-27T16:21:28.000Z"
+  },
+  {
+    "id": "PROD-022",
+    "name": "Three-Way Vichithra Silk Gown with Beaded Coat",
+    "category": "Gowns",
+    "description": "Launching our beautiful gown and coat outfit, designed to be styled in three different ways. Made with Vichithra Silk and finished with heavy beadwork on the coat, this look is perfect for parties, functions, and special occasions.",
+    "price": 950,
+    "discountPrice": 780,
+    "stock": 18,
+    "sku": "GWN-022",
+    "images": [
+      "http://localhost:3000/uploads/products/product-22/WhatsApp Image 2026-09-27 at 4.28.35 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-22/WhatsApp Image 2026-09-27 at 4.28.36 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-22/WhatsApp Image 2026-09-27 at 4.28.35 PM.jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XL",
+      "XXXL"
+    ],
+    "colors": [
+      "Maroon",
+      "Blue"
+    ],
+    "details": {
+      "gownFabric": "Vichithra Silk",
+      "coatFabric": "Vichithra Silk",
+      "gownLength": "47 inches",
+      "coatLength": "14 inches",
+      "coatWork": "Heavy beads",
+      "coatSleeveLength": "10.5 inches",
+      "gownSleeves": "Short sleeves",
+      "shortSleeveLength": "4 inches",
+      "lining": "Soft crepe",
+      "styling": "One outfit, three different styles",
+      "price": "850, free shipping",
+      "occasion": "Parties, functions, and special occasions"
+    },
+    "createdAt": "2026-09-27T16:28:35.000Z",
+    "updatedAt": "2026-09-27T16:28:35.000Z"
+  },
+  {
+    "id": "PROD-023",
+    "name": "Couple Combo - Women's Set and Men's Shirt",
+    "category": "Couple Combo",
+    "description": "A comfortable couple combo made from all-cotton fabric, available in Orange, Ink Blue, and Brown. Choose the women's set with men's shirt for 1999, or add men's pants for the full combo at 2599.",
+    "price": 1999,
+    "discountPrice": 1599,
+    "stock": 20,
+    "sku": "CPL-023",
+    "images": [
+      "http://localhost:3000/uploads/products/product-23/WhatsApp Image 2026-09-27 at 4.28.16 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-23/WhatsApp Image 2026-09-27 at 4.28.17 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-23/WhatsApp Image 2026-09-27 at 4.28.17 PM (2).jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-23/WhatsApp Image 2026-09-27 at 4.28.16 PM.jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Orange",
+      "Ink Blue",
+      "Brown"
+    ],
+    "details": {
+      "fabric": "All cotton",
+      "packageOption1": "Women's set + men's shirt: 1999",
+      "packageOption2": "Women's set + men's shirt + men's pant: 2599",
+      "shipping": "Shipping charge to be confirmed"
+    },
+    "createdAt": "2026-09-27T16:28:16.000Z",
+    "updatedAt": "2026-09-27T16:28:16.000Z"
+  },
+  {
+    "id": "PROD-024",
+    "name": "Girls Floral Organza Party Dress",
+    "category": "Gowns",
+    "description": "A dreamy floral dress for your little fashionista, designed with a flared princess fit for birthdays, weddings, and special occasions.",
+    "price": 1199,
+    "discountPrice": 899,
+    "stock": 20,
+    "sku": "GWN-024",
+    "images": [
+      "http://localhost:3000/uploads/products/product-24/WhatsApp Image 2026-09-27 at 4.33.38 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-24/WhatsApp Image 2026-09-27 at 4.33.38 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-24/WhatsApp Image 2026-09-27 at 4.33.39 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-24/WhatsApp Image 2026-09-27 at 4.33.38 PM (1).jpeg",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Pink",
+      "Purple",
+      "Yellow"
+    ],
+    "details": {
+      "outerFabric": "Premium floral organza",
+      "innerFabric": "Soft satin inner",
+      "neckline": "Collar neck",
+      "sleeves": "Puff sleeves",
+      "fit": "Flared princess fit",
+      "occasion": "Birthdays, weddings, and special occasions",
+      "price": "999 + shipping"
+    },
+    "createdAt": "2026-09-27T16:33:38.000Z",
+    "updatedAt": "2026-09-27T16:33:38.000Z"
+  },
+  {
+    "id": "PROD-025",
+    "name": "Couple Combo with Heavy Space Silk Lehenga Choli",
+    "category": "Couple Combo",
+    "description": "A couple combo featuring a beautiful heavy Space Silk lehenga choli set with double frill and a matching cotton men's shirt and pant. The women's set includes a fully stitched sequins-embroidered blouse, lehenga, dupatta, and belt. Choose the women's set with men's shirt for 1999, or the set with men's shirt and pant for 2599.",
+    "price": 2199,
+    "discountPrice": 1899,
+    "stock": 20,
+    "sku": "CPL-025",
+    "images": [
+      "http://localhost:3000/uploads/products/product-25/WhatsApp Image 2026-09-27 at 4.36.54 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-25/WhatsApp Image 2026-09-27 at 4.36.55 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-25/WhatsApp Image 2026-09-27 at 4.36.55 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-25/WhatsApp Image 2026-09-27 at 4.36.55 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-25/WhatsApp Image 2026-09-27 at 4.36.56 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-25/WhatsApp Image 2026-09-27 at 4.36.54 PM.jpeg",
+    "sizes": [
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Pink",
+      "Maroon",
+      "Orange",
+      "Light Blue",
+      "Lavendar"
+    ],
+    "details": {
+      "womenSetFabric": "Heavy Space Silk",
+      "blouse": "Fully stitched with sequins embroidery",
+      "blouseSizes": "M, L, XL, XXL",
+      "blouseFrillFlare": "3 meters",
+      "lehengaFabric": "Heavy Space Silk",
+      "lehengaFlare": "3.5 meters",
+      "lining": "Micro cotton",
+      "dupattaFabric": "Heavy Space Silk",
+      "dupattaLength": "2.25 mtrs",
+      "package": "Blouse + Lehenga + Dupatta + Belt, with cotton men's shirt and optional pant",
+      "packageOption1": "Women's set + men's shirt: 1999",
+      "packageOption2": "Women's set + men's shirt + men's pant: 2599"
+    },
+    "createdAt": "2026-09-27T16:36:54.000Z",
+    "updatedAt": "2026-09-27T16:36:54.000Z"
+  },
+  {
+    "id": "PROD-026",
+    "name": "Three-Piece Shirt, Crop Top and Denim Outfit Combo",
+    "category": "Modern Wear",
+    "description": "A mix-and-match outfit featuring a cotton sleeveless tank crop top, a cotton-blend shirt, and relaxed-fit denim jeans. Available in Blue with White, Pink with White, Yellow with Black, and Light Blue with White combinations.",
+    "price": 1699,
+    "discountPrice": 1299,
+    "stock": 20,
+    "sku": "CPL-026",
+    "images": [
+      "http://localhost:3000/uploads/products/product-26/WhatsApp Image 2026-09-27 at 4.41.22 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-26/WhatsApp Image 2026-09-27 at 4.41.22 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-26/WhatsApp Image 2026-09-27 at 4.41.22 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-26/WhatsApp Image 2026-09-27 at 4.41.23 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-26/WhatsApp Image 2026-09-27 at 4.41.22 PM (1).jpeg",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Blue with White",
+      "Pink with White",
+      "Yellow with Black",
+      "Light Blue with White"
+    ],
+    "details": {
+      "package": "Shirt + Crop Top + Jeans",
+      "cropTopFabric": "Cotton",
+      "cropTopStyle": "Sleeveless tank crop",
+      "shirtFabric": "Cotton blend",
+      "shirtSizes": "XS to XXL, varies by design",
+      "jeansFit": "Relaxed fit denim",
+      "jeansColors": "White, Dark Blue, Light Blue, Cream",
+      "jeansSizes": "24 to 36, varies by style",
+      "comboPrice": "1699",
+      "individualShirtPrice": "499",
+      "individualCropTopPrice": "200",
+      "individualJeansPrice": "1000",
+      "delivery": "Available across India; 4-8 days"
+    },
+    "createdAt": "2026-09-27T16:41:22.000Z",
+    "updatedAt": "2026-09-27T11:44:11.228Z"
+  },
+  {
+    "id": "PROD-027",
+    "name": "Khadi Cotton Saree with Handwork Blouse",
+    "category": "Sarees",
+    "description": "A Khadi cotton saree paired with a stitched pure Khadi cotton blouse featuring beautiful heavy handwork. Design name: B-1. Ready to ship.",
+    "price": 1599,
+    "discountPrice": 1399,
+    "stock": 20,
+    "sku": "SAR-027",
+    "images": [
+      "http://localhost:3000/uploads/products/product-27/WhatsApp Image 2026-09-27 at 4.45.06 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-27/WhatsApp Image 2026-09-27 at 4.45.31 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-27/WhatsApp Image 2026-09-27 at 4.45.31 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-27/WhatsApp Image 2026-09-27 at 4.45.31 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-27/WhatsApp Image 2026-09-27 at 4.45.32 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-27/WhatsApp Image 2026-09-27 at 4.45.32 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-27/WhatsApp Image 2026-09-27 at 4.45.32 PM (3).jpeg",
+      "http://localhost:3000/uploads/products/product-27/WhatsApp Image 2026-09-27 at 4.45.32 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-27/WhatsApp Image 2026-09-27 at 4.45.06 PM.jpeg",
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Green",
+      "Dark Pink",
+      "Black",
+      "Light Pink",
+      "Brown",
+      "Yellow",
+      "Red"
+    ],
+    "details": {
+      "designName": "B-1",
+      "fabric": "Khadi cotton",
+      "blouseFabric": "Pure Khadi cotton",
+      "blouse": "Stitched with heavy handwork",
+      "blouseSize": "38, alterable up to 42",
+      "comboPrice": "1499 + shipping",
+      "status": "Ready to ship"
+    },
+    "createdAt": "2026-09-27T16:45:06.000Z",
+    "updatedAt": "2026-09-27T16:45:06.000Z"
+  },
+  {
+    "id": "PROD-028",
+    "name": "Kalambari Cotton Saree with Handwork Blouse",
+    "category": "Sarees",
+    "description": "Presenting a beautiful cotton saree with a pure Khadi cotton blouse featuring heavy handwork. Design name: B-1. Ready to ship.",
+    "price": 1699,
+    "discountPrice": 1399,
+    "stock": 20,
+    "sku": "SAR-028",
+    "images": [
+      "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.53 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.54 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.54 PM (2).jpeg",
+     "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.55 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.55 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.55 PM (3).jpeg",
+      "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.55 PM.jpeg"
+   ],
+    "image": "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.53 PM (1).jpeg",
+    "sizes": [
+      "Free Size"
+    ],
+    "colors": [
+      "Maroon",
+      "Red",
+      "White",
+      "Blue",
+      "Hot Pink",
+      "Navy Blue",
+      "Coral Pink",
+      "Yellow"
+    ],
+    "details": {
+      "designName": "B-1",
+      "sareeFabric": "Kalambari cotton (product title); Khadi cotton (description)",
+      "blouseFabric": "Pure Khadi cotton",
+      "blouseWork": "Heavy handwork",
+      "blouseSize": "38, alterable up to 42",
+      "price": "1499 + shipping",
+      "status": "Ready to ship"
+    },
+    "createdAt": "2026-09-27T17:06:53.000Z",
+    "updatedAt": "2026-09-27T17:06:53.000Z"
+  },
+  {
+    "id": "PROD-029",
+    "name": "Kanjivaram Silk Lehenga with Designer Blouse and Dupatta",
+    "category": "Half Saree Stitched",
+    "description": "Launch of an exclusive designer premium-quality pure Kanjivaram silk fully stitched lehenga with a fully stitched designer maggam-work blouse and embroidered dupatta. Quality product.",
+    "price": 1999,
+    "discountPrice": 1799,
+    "stock": 20,
+    "sku": "HFS-029",
+    "images": [
+      "http://localhost:3000/uploads/products/product-29/WhatsApp Image 2026-09-27 at 5.09.01 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-29/WhatsApp Image 2026-09-27 at 5.09.02 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-29/WhatsApp Image 2026-09-27 at 5.09.19 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-29/WhatsApp Image 2026-09-27 at 5.09.19 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-29/WhatsApp Image 2026-09-27 at 5.09.20 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-29/WhatsApp Image 2026-09-27 at 5.09.01 PM.jpeg",
+    "sizes": [
+      "Free Size"
+    ],
+    "colors": [],
+    "details": {
+      "lehengaFabric": "Fully stitched Kanjivaram silk with big Jacquard border and canvas patta",
+      "lehengaLength": "42 inches",
+      "lehengaFlare": "4 meters",
+      "blouse": "Fully stitched Rangoli blouse with heavy designer work on front, back, and sleeves",
+      "dupatta": "Premium Rangoli silk with embroidered cutwork border",
+      "package": "Lehenga + Blouse + Dupatta",
+      "price": "1999 + shipping"
+    },
+    "createdAt": "2026-09-27T17:09:01.000Z",
+    "updatedAt": "2026-09-27T17:09:01.000Z"
+  },
+  {
+    "id": "PROD-030",
+    "name": "Rich Satin Party Wear Shirt",
+    "category": "Men's Shirts",
+    "description": "Rich satin party-wear shirt with a solid pattern and long sleeves. Net quantity: 1. Made in India.",
+    "price":699,
+    "discountPrice": 500,
+    "stock": 50,
+    "sku": "MNS-030",
+    "images": [
+      "http://localhost:3000/uploads/products/product-30/WhatsApp Image 2026-09-27 at 5.13.48 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-30/WhatsApp Image 2026-09-27 at 5.13.48 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-30/WhatsApp Image 2026-09-27 at 5.13.48 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-30/WhatsApp Image 2026-09-27 at 5.13.49 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-30/WhatsApp Image 2026-09-27 at 5.13.49 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-30/WhatsApp Image 2026-09-27 at 5.13.50 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-30/WhatsApp Image 2026-09-27 at 5.13.50 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-30/WhatsApp Image 2026-09-27 at 5.13.50 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-30/WhatsApp Image 2026-09-27 at 5.13.48 PM (1).jpeg",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"    ],
+    "colors": [
+      "Purple",
+      "Light Pink",
+      "Grey",
+      "Light Blue",
+      "Light Green",
+      "White",
+      "Blue",
+      "Brown"
+    ],
+    "details": {
+      "fabric": "Satin",
+      "sleeveLength": "Long sleeves",
+      "pattern": "Solid",
+      "netQuantity": "1",
+      "sizeChart": "XS (chest 36 in, length 27.5 in); S (38 in, 28 in); M (40 in, 28.5 in); L (42 in, 29 in); XL (44 in, 29.5 in); XXL (46 in, 30 in)",
+      "countryOfOrigin": "India",
+      "price": "Price to be confirmed"
+    },
+    "createdAt": "2026-09-27T17:13:48.000Z",
+    "updatedAt": "2026-09-27T17:13:48.000Z"
+  },
+  {
+    "id": "PROD-031",
+    "name": "Kids Heavy Lichi Silk Lehenga Choli",
+    "category": "Kids Wear",
+    "description": "New kids lehenga choli with full flair as shown in the photos. The fully stitched lehenga is made from pure heavy Lichi silk with all-over zari weaving and a contrast heavy zari border with canvas finish. The fully stitched pure silk blouse has all-over embroidery and a back-side chain. The pure silk dupatta has an elegant heavy embroidery border on one side. Heavy crepe lining runs fully to the bottom. Ready to ship; next-day pickup booking is compulsory.",
+    "price": 1999,
+    "discountPrice": 1499,
+    "stock": 20,
+    "sku": "KID-031",
+    "images": [
+     
+    "http://localhost:3000/uploads/products/product-31/WhatsApp Image 2026-09-27 at 5.16.46 PM (1).jpeg",
+    "http://localhost:3000/uploads/products/product-31/WhatsApp Image 2026-09-27 at 5.16.47 PM (1).jpeg",
+     "http://localhost:3000/uploads/products/product-31/WhatsApp Image 2026-09-27 at 5.16.47 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-31/WhatsApp Image 2026-09-27 at 5.16.48 PM (1).jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-31/WhatsApp Image 2026-09-27 at 5.16.45 PM (1).jpeg",
+    "sizes": [
+      "19 (0-1 yrs)",
+      "20 (2-3 yrs)",
+      "22 (4-5 yrs)",
+      "24 (6-7 yrs)",
+      "26 (8-9 yrs)",
+      "28 (10-11 yrs)",
+      "30 (12-13 yrs)",
+      "32 (14-15 yrs)"
+    ],
+    "colors": [
+      "Purple",
+      "Blue",
+      "Green",
+      "Red"
+    ],
+    "details": {
+      "lehengaFabric": "Pure heavy Lichi silk with all-over zari weaving and contrast heavy zari border",
+      "finish": "Canvas finish",
+      "blouse": "Fully stitched pure silk with all-over embroidery and back-side chain",
+      "dupatta": "Pure silk with one-side heavy embroidery border",
+      "lining": "Heavy crepe lining to the bottom",
+      "price": "1599, free shipping",
+      "status": "Ready to ship",
+      "booking": "Next-day pickup booking compulsory",
+      "quality": "Quality product"
+    },
+    "createdAt": "2026-09-27T17:16:45.000Z",
+    "updatedAt": "2026-09-27T17:16:45.000Z"
+  },
+  {
+    "id": "PROD-032",
+    "name": "Red Cotton Floral Embroidered Flared Dress",
+    "category": "Maternity Wear",
+    "description": "A red cotton dress with delicate floral embroidery, a square neckline, puff sleeves, and a flowing flared skirt. Available in sizes XS to XXL.",
+    "price": 999,
+    "discountPrice": 799,
+    "stock": 20,
+    "sku": "MAT-032",
+    "images": [
+         "http://localhost:3000/uploads/products/product-32/WhatsApp Image 2026-09-27 at 5.22.46 PM (2).jpeg",
+  "http://localhost:3000/uploads/products/product-32/WhatsApp Image 2026-09-27 at 5.22.45 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-32/WhatsApp Image 2026-09-27 at 5.22.46 PM (1).jpeg",
+     "http://localhost:3000/uploads/products/product-32/WhatsApp Image 2026-09-27 at 5.22.46 PM.jpeg"
+    ],
+    "image": "http://localhost:3000/uploads/products/product-32/WhatsApp Image 2026-09-27 at 5.22.44 PM.jpeg",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "colors": [
+      "Red"
+    ],
+    "details": {
+      "fabric": "Cotton",
+      "design": "Floral embroidery",
+      "neckline": "Square neckline",
+      "sleeves": "Puff sleeves",
+      "fit": "Flared skirt",
+      "sizeRange": "XS to XXL",
+      "price": "899 + shipping"
+    },
+    "createdAt": "2026-09-27T17:22:44.000Z",
+    "updatedAt": "2026-09-27T17:22:44.000Z"
+  }
+]
