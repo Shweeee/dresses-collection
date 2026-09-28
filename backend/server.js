@@ -26,6 +26,11 @@ const getPublicImageUrl = (imagePath) => {
   }
 
   if (/^https?:\/\//i.test(imagePath)) {
+    const localUploadPath = imagePath.match(/^https?:\/\/(?:localhost|127\.0\.0\.1)(?::\d+)?(\/uploads\/.*)$/i);
+    if (localUploadPath) {
+      return localUploadPath[1];
+    }
+
     return imagePath;
   }
 
