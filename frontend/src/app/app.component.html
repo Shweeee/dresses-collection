@@ -1,0 +1,712 @@
+<div class="app-shell">
+  <header class="main-header">
+    <div class="brand-block">
+      <div class="brand-badge">DC</div>
+      <div>
+        <p class="brand-subtitle">Boutique elegance</p>
+        <h1>{{ title }}</h1>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <button (click)="navigateTo('home')">Home</button>
+      <div class="category-dropdown">
+        <button>Categories</button>
+        <div class="dropdown-menu">
+          <button (click)="filterByCategory('All Products')">All Products</button>
+          <button *ngFor="let category of categories" (click)="filterByCategory(category)">{{ category }}</button>
+        </div>
+      </div>
+      <button (click)="navigateTo('orders')">My Orders</button>
+      <button *ngIf="adminAuthenticated || adminAccessVisible" type="button" (click)="openAdminAccess()">Admin</button>
+    </nav>
+
+    <div class="header-actions" *ngIf="products.length">
+      <div class="user-pill" *ngIf="currentUser; else guestUserActions">
+        <span>Hi, {{ currentUser.fullName || currentUser.username }}</span>
+        <button class="secondary" type="button" (click)="logoutUser()">Logout</button>
+      </div>
+      <ng-template #guestUserActions>
+        <button class="secondary" type="button" (click)="navigateTo('orders')">Login / Register</button>
+      </ng-template>
+      <button class="cart-button" (click)="navigateTo('checkout')">
+        <span>🛒</span>
+        <span class="cart-count">{{ cartCount }}</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <div *ngIf="toastMessage" class="toast-notification">{{ toastMessage }}</div>
+
+    <section *ngIf="currentView === 'home'" class="hero-section">
+      <div class="hero-copy">
+        <span class="eyebrow">New Arrival</span>
+        <h2>Dress up every moment beautifully.</h2>
+        <p class="hero-subtitle">
+          Discover elegant sarees, graceful gowns, festive lehengas, and everyday essentials designed for celebrations, comfort, and confidence.
+        </p>
+        <div class="hero-actions">
+          <button class="primary" (click)="navigateTo('products')">Shop Now</button>
+        </div>
+        <div class="home-contact-links">
+          <a class="whatsapp-button" href="https://wa.me/919566236867" target="_blank" rel="noopener noreferrer">WhatsApp 9566236867</a>
+          <a class="whatsapp-button secondary-whatsapp" href="https://wa.me/917530037134" target="_blank" rel="noopener noreferrer">WhatsApp 7530037134</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img [src]="homeFeatureImage" alt="Dress collection" />
+      </div>
+    </section>
+
+    <section *ngIf="currentView === 'home'" class="home-categories">
+      <div class="home-categories-heading">
+        <h2>Shop by Category</h2>
+        <button type="button" class="text-button" (click)="filterByCategory('All Products')">View all products</button>
+      </div>
+      <div class="home-category-grid">
+        <button
+          type="button"
+          class="home-category-link"
+          *ngFor="let category of categories"
+          (click)="filterByCategory(category)"
+        >
+          <img [src]="getCategoryImage(category)" [alt]="category" [class.home-saree-image]="category === 'Sarees'" />
+          <span>{{ category }}</span>
+        </button>
+      </div>
+    </section>
+
+    <section *ngIf="currentView === 'products'" class="catalog-section">
+      <aside class="sidebar">
+        <h3>Categories</h3>
+        <button class="filter-btn" [class.active]="selectedCategory === 'All Products'" (click)="filterByCategory('All Products')">All Products</button>
+        <button *ngFor="let category of categories" class="filter-btn" [class.active]="selectedCategory === category" (click)="filterByCategory(category)">
+          {{ category }}
+        </button>
+      </aside>
+
+      <div class="products-panel">
+        <div *ngIf="!selectedProduct">
+          <div class="category-block" *ngFor="let category of visibleCategories">
+            <div class="category-header">
+              <h3>{{ category }}</h3>
+              <span>{{ getProductsForCategory(category).length }} items</span>
+            </div>
+            <div class="product-grid">
+              <article class="product-card" *ngFor="let product of getProductsForCategory(category)">
+                <img [src]="product.image" [alt]="product.name" />
+                <div class="thumb-row" *ngIf="product.id === 'PROD-031' && product.images.length > 1">
+                  <button
+                    type="button"
+                    *ngFor="let image of product.images; let i = index"
+                    class="thumb-button"
+                    [class.active]="product.image === image"
+                    [attr.aria-label]="'Show ' + product.name + ' photo ' + (i + 1)"
+                    (click)="product.image = image"
+                  >
+                    <img [src]="image" [alt]="product.name + ' photo ' + (i + 1)" />
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="card-header">
+                    <span class="category-pill">{{ product.category }}</span>
+                    <span class="stock-pill" [class.out-of-stock]="product.stock === 0">{{ product.stock > 0 ? 'In Stock' : 'Out of Stock' }}</span>
+                  </div>
+                  <h3>{{ product.name }}</h3>
+                  <ng-container *ngIf="hasProductPrice(product); else cardPriceToConfirm">
+                    <div class="price-block" *ngIf="hasProductDiscount(product); else regularPriceCard">
+                      <span class="discount-price">₹{{ getProductDisplayPrice(product) }}</span>
+                      <span class="original-price">₹{{ getOriginalProductPrice(product) }}</span>
+                    </div>
+                    <ng-template #regularPriceCard>
+                      <span class="discount-price">₹{{ product.price }}</span>
+                    </ng-template>
+                  </ng-container>
+                  <ng-template #cardPriceToConfirm>
+                    <p class="meta">Price to be confirmed</p>
+                  </ng-template>
+                  <p class="meta">Sizes: {{ product.sizes.join(', ') }}</p>
+                  <p class="meta">Colors: {{ product.colors.join(', ') }}</p>
+                  <div class="card-actions">
+                    <button class="primary" [disabled]="!hasProductPrice(product)" (click)="addToCartFromCard(product)">Add to Cart</button>
+                    <button class="secondary" (click)="openProductDetails(product)">View Details</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-detail" *ngIf="selectedProduct">
+          <button class="back-button" (click)="selectedProduct = null">← Back to products</button>
+          <div class="detail-layout">
+            <div class="gallery-panel">
+              <div class="main-gallery-image">
+                <img [src]="selectedProduct.images[selectedProductImageIndex] || selectedProduct.image" [alt]="selectedProduct.name" />
+              </div>
+              <div class="thumb-row" *ngIf="selectedProduct && selectedProduct.images && selectedProduct.images.length > 1">
+                <button
+                  type="button"
+                  *ngFor="let image of selectedProduct.images; let i = index"
+                  class="thumb-button"
+                  [class.active]="i === selectedProductImageIndex"
+                  (click)="selectedProductImageIndex = i"
+                >
+                  <img [src]="image" [alt]="selectedProduct.name + ' image ' + (i + 1)" />
+                </button>
+              </div>
+            </div>
+            <div class="detail-copy">
+              <span class="category-pill">{{ selectedProduct.category }}</span>
+              <h3>{{ selectedProduct.name }}</h3>
+              <ng-container *ngIf="hasProductPrice(selectedProduct); else detailPriceToConfirm">
+                <div class="price-block detail-price-block" *ngIf="hasProductDiscount(selectedProduct); else regularDetailPrice">
+                  <span class="discount-price">₹{{ getProductDisplayPrice(selectedProduct) }}</span>
+                  <span class="original-price">₹{{ getOriginalProductPrice(selectedProduct) }}</span>
+                </div>
+                <ng-template #regularDetailPrice>
+                  <span class="discount-price">₹{{ selectedProduct.price }}</span>
+                </ng-template>
+              </ng-container>
+              <ng-template #detailPriceToConfirm>
+                <p class="meta">Price to be confirmed</p>
+              </ng-template>
+              <p class="description">{{ selectedProduct.description }}</p>
+
+              <div class="detail-meta">
+                <div>
+                  <label>Size</label>
+                  <select [(ngModel)]="selectedSize">
+                    <option *ngFor="let size of selectedProduct.sizes" [value]="size">{{ size }}</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Color</label>
+                  <select [ngModel]="selectedColor" (ngModelChange)="onColorSelect($event)">
+                    <option *ngFor="let color of selectedProduct.colors" [value]="color">{{ color }}</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Quantity</label>
+                  <input type="number" min="1" [(ngModel)]="quantity" />
+                </div>
+              </div>
+
+              <div class="color-options" *ngIf="selectedProduct.colors?.length">
+                <span class="color-label">Available colors</span>
+                <div class="color-swatches">
+                  <button
+                    type="button"
+                    *ngFor="let color of selectedProduct.colors"
+                    class="color-swatch"
+                    [class.selected]="selectedColor === color"
+                    (click)="onColorSelect(color)"
+                  >
+                    {{ color }}
+                  </button>
+                </div>
+              </div>
+
+              <div class="detail-footer">
+                <p class="stock-status">{{ selectedProduct.stock > 0 ? 'Available in stock' : 'Currently unavailable' }}</p>
+                <button class="primary" [disabled]="!hasProductPrice(selectedProduct)" (click)="addToCart(selectedProduct)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section *ngIf="currentView === 'checkout'" class="checkout-section">
+      <div class="checkout-layout">
+        <div class="checkout-form-wrap">
+          <h3>Checkout</h3>
+          <form class="checkout-form" (ngSubmit)="placeOrder()">
+            <div class="form-grid">
+              <div class="field-group">
+                <label>Full Name</label>
+                <input [ngModel]="checkoutForm.customerName" (ngModelChange)="onCheckoutFieldChange('customerName', $event)" name="customerName" required />
+                <small *ngIf="checkoutErrors['customerName']" class="error-text">{{ checkoutErrors['customerName'] }}</small>
+              </div>
+              <div class="field-group">
+                <label>Mobile Number</label>
+                <input [ngModel]="checkoutForm.mobileNumber" (ngModelChange)="onCheckoutFieldChange('mobileNumber', $event)" name="mobileNumber" required />
+                <small *ngIf="checkoutErrors['mobileNumber']" class="error-text">{{ checkoutErrors['mobileNumber'] }}</small>
+              </div>
+              <div class="field-group full-span">
+                <label>Email Address</label>
+                <input [ngModel]="checkoutForm.email" (ngModelChange)="onCheckoutFieldChange('email', $event)" name="email" type="email" />
+                <small *ngIf="checkoutErrors['email']" class="error-text">{{ checkoutErrors['email'] }}</small>
+              </div>
+            </div>
+
+            <h4>Delivery Address</h4>
+            <div class="form-grid">
+              <div class="field-group">
+                <label>House / Flat Number</label>
+                <input [ngModel]="checkoutForm.houseNumber" (ngModelChange)="onCheckoutFieldChange('houseNumber', $event)" name="houseNumber" required />
+                <small *ngIf="checkoutErrors['houseNumber']" class="error-text">{{ checkoutErrors['houseNumber'] }}</small>
+              </div>
+              <div class="field-group">
+                <label>Street Address</label>
+                <input [ngModel]="checkoutForm.street" (ngModelChange)="onCheckoutFieldChange('street', $event)" name="street" required />
+                <small *ngIf="checkoutErrors['street']" class="error-text">{{ checkoutErrors['street'] }}</small>
+              </div>
+              <div class="field-group">
+                <label>Area</label>
+                <input [ngModel]="checkoutForm.area" (ngModelChange)="onCheckoutFieldChange('area', $event)" name="area" required />
+                <small *ngIf="checkoutErrors['area']" class="error-text">{{ checkoutErrors['area'] }}</small>
+              </div>
+              <div class="field-group">
+                <label>City</label>
+                <input [ngModel]="checkoutForm.city" (ngModelChange)="onCheckoutFieldChange('city', $event)" name="city" required />
+                <small *ngIf="checkoutErrors['city']" class="error-text">{{ checkoutErrors['city'] }}</small>
+              </div>
+              <div class="field-group">
+                <label>State</label>
+                <input [ngModel]="checkoutForm.state" (ngModelChange)="onCheckoutFieldChange('state', $event)" name="state" required />
+                <small *ngIf="checkoutErrors['state']" class="error-text">{{ checkoutErrors['state'] }}</small>
+              </div>
+              <div class="field-group">
+                <label>Pincode</label>
+                <input [ngModel]="checkoutForm.pincode" (ngModelChange)="onCheckoutFieldChange('pincode', $event)" name="pincode" required />
+                <small *ngIf="checkoutErrors['pincode']" class="error-text">{{ checkoutErrors['pincode'] }}</small>
+              </div>
+            </div>
+
+            <div class="summary-card" *ngIf="cart.length > 0">
+              <h4>Order Summary</h4>
+              <div class="summary-list">
+                <div class="summary-item" *ngFor="let item of cart">
+                  <img [src]="item.product.image" alt="{{ item.product.name }}" />
+                  <div class="summary-copy">
+                    <div class="summary-head">
+                      <strong>{{ item.product.name }}</strong>
+                      <span>₹{{ getProductDisplayPrice(item.product) * item.quantity }}</span>
+                    </div>
+                    <p>Size: {{ item.selectedSize || 'N/A' }} | Color: {{ item.selectedColor || 'N/A' }}</p>
+                    <p>Qty: {{ item.quantity }} | Price: ₹{{ getProductDisplayPrice(item.product) }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="totals-box">
+                <div class="total-row">
+                  <span>Subtotal</span>
+                  <strong>₹{{ cartSubtotal }}</strong>
+                </div>
+                <div class="total-row">
+                  <span>Delivery Charge</span>
+                  <strong>₹{{ deliveryCharge }}</strong>
+                </div>
+                <div class="total-row final-total">
+                  <span>Final Total</span>
+                  <strong>₹{{ finalAmount }}</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="payment-step" *ngIf="paymentStep">
+              <h4>Payment Verification</h4>
+              <div class="upi-box">
+                <div class="upi-header">
+                  <span>UPI ID</span>
+                  <button type="button" class="copy-button" (click)="copyUpiId()">Copy UPI ID</button>
+                </div>
+                <p class="upi-id">{{ upiId }}</p>
+                <p class="payment-instruction">Pay exactly ₹{{ finalAmount }} to this UPI ID.</p>
+              </div>
+
+              <div class="upi-box">
+                <div class="upi-header">
+                  <span>Scan QR to Pay</span>
+                </div>
+                <img [src]="paymentQrImage" alt="UPI QR Code" style="width: 220px; max-width: 100%; display: block; margin: 12px auto; border-radius: 12px; background: white; padding: 8px;" />
+                <a [href]="paymentQrImage" target="_blank" rel="noopener noreferrer" class="primary" style="display: inline-block; text-align: center; width: 100%; margin-top: 8px; text-decoration: none;">Download QR</a>
+              </div>
+
+              <div class="upi-box">
+                <button type="button" class="primary full-width" (click)="openUpiApp()">Pay with UPI app</button>
+              </div>
+
+              <p class="payment-instruction">Choose GPay, PhonePe, Paytm, or another installed UPI app to pay. Return here after payment and upload a screenshot as proof. No transaction ID is needed.</p>
+
+              <div class="field-group">
+                <label>Payment Screenshot (required)</label>
+                <input type="file" accept="image/*" required (change)="handlePaymentScreenshotUpload($event)" />
+                <img *ngIf="paymentProof.paymentScreenshot" [src]="paymentProof.paymentScreenshot" alt="Payment proof" class="payment-proof-preview" />
+              </div>
+
+              <button class="primary full-width" type="button" (click)="placeOrder()" [disabled]="!isCheckoutFormValid()">
+                Verify & Place Order
+              </button>
+            </div>
+
+            <button *ngIf="!paymentStep" class="primary full-width" type="button" (click)="proceedToPayment()" [disabled]="!isCheckoutFormValid()">
+              Proceed to Payment
+            </button>
+          </form>
+        </div>
+
+        <aside class="cart-summary">
+          <h3>Your Cart</h3>
+          <div *ngIf="cart.length === 0" class="empty-cart">
+            <p>Your cart is empty.</p>
+          </div>
+          <div *ngIf="cart.length > 0" class="cart-items">
+            <div class="cart-item" *ngFor="let item of cart">
+              <div class="cart-item-main">
+                <div>
+                  <h4>{{ item.product.name }}</h4>
+                  <p>{{ item.selectedSize || '' }} {{ item.selectedColor || '' }}</p>
+                </div>
+                <strong>₹{{ item.product.price * item.quantity }}</strong>
+              </div>
+              <div class="cart-controls">
+                <button type="button" (click)="changeQuantity(item, -1)">-</button>
+                <span>{{ item.quantity }}</span>
+                <button type="button" (click)="changeQuantity(item, 1)">+</button>
+                <button type="button" class="text-button" (click)="removeFromCart(item)">Remove</button>
+              </div>
+            </div>
+          </div>
+          <div class="total-row">
+            <span>Total</span>
+            <strong>₹{{ totalAmount }}</strong>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section *ngIf="currentView === 'orders'" class="orders-section">
+      <div class="order-success" *ngIf="orderPlaced && latestOrder">
+        <h3>Order confirmed</h3>
+        <p>Your order ID is <strong>{{ latestOrder.orderId }}</strong>.</p>
+        <p>Total paid: <strong>₹{{ latestOrder.totalAmount }}</strong></p>
+        <p>Payment method: <strong>{{ latestOrder.payment.method }}</strong></p>
+      </div>
+
+      <div class="auth-card" *ngIf="!currentUser && !adminAuthenticated">
+        <div class="auth-toggle">
+          <button type="button" class="secondary" [class.active]="authMode === 'login'" (click)="authMode = 'login'">Login</button>
+          <button type="button" class="secondary" [class.active]="authMode === 'register'" (click)="authMode = 'register'">Register</button>
+        </div>
+
+        <div class="form-grid auth-form-grid">
+          <div class="field-group full-span">
+            <label>Username</label>
+            <input [(ngModel)]="authForm.username" name="authUsername" placeholder="Enter username" />
+          </div>
+          <div class="field-group full-span">
+            <label>Password</label>
+            <input [(ngModel)]="authForm.password" name="authPassword" type="password" placeholder="Enter password" />
+          </div>
+
+          <div *ngIf="authMode === 'register'" class="field-group full-span">
+            <label>Email</label>
+            <input [(ngModel)]="authForm.email" name="authEmail" type="email" placeholder="Enter email" />
+          </div>
+          <div *ngIf="authMode === 'register'" class="field-group full-span">
+            <label>Full Name</label>
+            <input [(ngModel)]="authForm.fullName" name="authFullName" placeholder="Enter full name" />
+          </div>
+          <div *ngIf="authMode === 'register'" class="field-group full-span">
+            <label>Mobile</label>
+            <input [(ngModel)]="authForm.mobile" name="authMobile" placeholder="Enter mobile number" />
+          </div>
+        </div>
+
+        <button class="primary" type="button" (click)="authMode === 'login' ? loginUser() : registerUser()">
+          {{ authMode === 'login' ? 'Login' : 'Create Account' }}
+        </button>
+        <p *ngIf="authError" class="error-text">{{ authError }}</p>
+      </div>
+
+      <div class="profile-panel" *ngIf="!adminAuthenticated">
+        <h3>My Profile & Orders</h3>
+        <div class="form-grid profile-search-grid">
+          <div class="field-group">
+            <label>Mobile Number</label>
+            <input [(ngModel)]="profileMobile" name="profileMobile" placeholder="Enter registered mobile" />
+          </div>
+          <div class="field-group">
+            <label>Order ID <span *ngIf="!currentUser">(required)</span></label>
+            <input [(ngModel)]="profileOrderId" name="profileOrderId" placeholder="Enter exact order ID" />
+          </div>
+        </div>
+        <button class="primary" type="button" (click)="searchProfileOrders()">View My Orders</button>
+
+        <div *ngIf="profileOrders.length === 0" class="empty-cart">
+          <p>No order history found for this profile.</p>
+        </div>
+
+        <div *ngIf="profileOrders.length > 0" class="orders-list">
+          <div class="order-item" *ngFor="let order of profileOrders">
+            <div class="order-header">
+              <div>
+                <p class="order-id">{{ order.orderId }}</p>
+                <h4>{{ order.customer.name }}</h4>
+              </div>
+              <span class="status-pill">{{ order.orderStatus }}</span>
+            </div>
+            <p><strong>Products:</strong> {{ getProductsSummary(order) }}</p>
+            <p><strong>Address:</strong> {{ order.address.houseNumber }}, {{ order.address.street }}, {{ order.address.city }}</p>
+            <p><strong>Payment:</strong> {{ order.payment.status }} | {{ order.payment.method }}</p>
+            <div class="order-footer">
+              <span>₹{{ order.totalAmount }}</span>
+              <span>{{ order.createdAt | date: 'mediumDate' }}</span>
+            </div>
+
+            <div class="tracking-box" *ngIf="order.trackingLink || order.orderStatus === 'Shipped' || order.orderStatus === 'Delivered' || order.orderStatus === 'Processing'">
+              <strong>Tracking:</strong>
+              <a *ngIf="order.trackingLink; else noTracking" [href]="order.trackingLink" target="_blank" rel="noopener noreferrer">{{ order.trackingLink }}</a>
+              <ng-template #noTracking>
+                <span>Tracking link will be shared by the admin once the order is dispatched.</span>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="orders-panel" *ngIf="adminAuthenticated">
+        <h3>All Orders (Newest First)</h3>
+        <div *ngIf="orderHistory.length === 0" class="empty-cart">
+          <p>No orders yet.</p>
+        </div>
+        <div *ngIf="orderHistory.length > 0" class="orders-list">
+          <div class="order-item" *ngFor="let order of orderHistory">
+            <div class="order-header">
+              <div>
+                <p class="order-id">{{ order.orderId }}</p>
+                <h4>{{ order.customer.name }}</h4>
+              </div>
+              <span class="status-pill">{{ order.orderStatus }}</span>
+            </div>
+            <p>{{ getProductsSummary(order) }}</p>
+            <p>Address: {{ order.address.houseNumber }}, {{ order.address.street }}, {{ order.address.city }}</p>
+            <div class="order-footer">
+              <span>₹{{ order.totalAmount }}</span>
+              <span>{{ order.payment.method }}</span>
+              <span>{{ order.createdAt | date: 'mediumDate' }}</span>
+            </div>
+            <div class="tracking-box" *ngIf="order.trackingLink || order.orderStatus === 'Shipped' || order.orderStatus === 'Delivered' || order.orderStatus === 'Processing'">
+              <strong>Tracking Link:</strong>
+              <a *ngIf="order.trackingLink; else noTracking" [href]="order.trackingLink" target="_blank" rel="noopener noreferrer">{{ order.trackingLink }}</a>
+              <ng-template #noTracking>
+                <span>No tracking link shared yet.</span>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-panel" *ngIf="adminAuthenticated || adminAccessVisible">
+        <div class="admin-header-row">
+          <h3>Admin Dashboard</h3>
+          <div *ngIf="adminAuthenticated" class="admin-status-text">Logged in as {{ adminLoggedInAs }}</div>
+          <button *ngIf="adminAuthenticated" class="secondary" type="button" (click)="logoutAdmin()">Logout</button>
+        </div>
+
+        <div *ngIf="!adminAuthenticated" class="admin-auth-card">
+          <h4>Private Admin Login</h4>
+          <div class="form-grid">
+            <div class="field-group">
+              <label>Username</label>
+              <input [(ngModel)]="adminUsername" name="adminUsername" />
+            </div>
+            <div class="field-group">
+              <label>Password</label>
+              <input [(ngModel)]="adminPassword" name="adminPassword" type="password" />
+            </div>
+          </div>
+          <button class="primary" type="button" (click)="loginAdmin()">Login</button>
+          <p *ngIf="adminError" class="error-text">{{ adminError }}</p>
+        </div>
+
+        <div *ngIf="adminAuthenticated" class="admin-content-wrap">
+          <div class="admin-products-section">
+            <div class="admin-toolbar">
+              <input
+                type="text"
+                [(ngModel)]="adminProductSearch"
+                placeholder="Search products or SKU"
+                aria-label="Search products"
+              />
+              <select [(ngModel)]="adminCategoryFilter" aria-label="Filter products by category">
+                <option value="All Categories">All Categories</option>
+                <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+              </select>
+              <button class="primary" type="button" (click)="openAddProduct()">Add Product</button>
+            </div>
+
+            <div class="admin-product-form-card">
+              <h4>{{ adminProductFormMode === 'add' ? 'Add Product' : 'Edit Product' }}</h4>
+
+              <div class="form-grid">
+                <div class="field-group">
+                  <label>Product Name</label>
+                  <input [(ngModel)]="adminProductForm.name" name="adminProductName" />
+                </div>
+                <div class="field-group">
+                  <label>Category</label>
+                  <select [(ngModel)]="adminProductForm.category" name="adminProductCategory" (change)="onAdminCategoryChange()">
+                    <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+                  </select>
+                </div>
+                <div class="field-group full-span">
+                  <label>Description</label>
+                  <textarea [(ngModel)]="adminProductForm.description" name="adminProductDescription" rows="4"></textarea>
+                </div>
+                <div class="field-group">
+                  <label>Price</label>
+                  <input [(ngModel)]="adminProductForm.price" name="adminProductPrice" type="number" min="0" />
+                </div>
+                <div class="field-group">
+                  <label>Discount Price</label>
+                  <input [(ngModel)]="adminProductForm.discountPrice" name="adminProductDiscountPrice" type="number" min="0" />
+                </div>
+                <div class="field-group">
+                  <label>Stock Quantity</label>
+                  <input [(ngModel)]="adminProductForm.stock" name="adminProductStock" type="number" min="0" />
+                </div>
+                <div class="field-group">
+                  <label>Product Code / SKU</label>
+                  <input [(ngModel)]="adminProductForm.sku" name="adminProductSku" />
+                </div>
+                <div class="field-group">
+                  <label>Sizes</label>
+                  <input [(ngModel)]="adminProductForm.sizesText" name="adminProductSizesText" placeholder="S, M, L, XL" />
+                </div>
+                <div class="field-group">
+                  <label>Colors</label>
+                  <input [(ngModel)]="adminProductForm.colorsText" name="adminProductColorsText" placeholder="Red, Gold, Ivory" />
+                </div>
+              </div>
+
+              <div class="category-details-grid" *ngIf="categoryDetailsFields[adminProductForm.category] as detailFields">
+                <div class="field-group" *ngFor="let field of detailFields">
+                  <label>{{ field.label }}</label>
+                  <input [(ngModel)]="adminProductForm.details[field.key]" [name]="'detail_' + field.key" />
+                </div>
+              </div>
+
+              <div class="admin-images-section">
+                <label class="upload-label">Product Images</label>
+                <input type="file" multiple accept="image/*" (change)="handleAdminImageUpload($event)" />
+                <div class="image-preview-grid" *ngIf="adminProductForm.images.length">
+                  <div class="image-preview-item" *ngFor="let image of adminProductForm.images; let i = index">
+                    <img [src]="image" [alt]="'Product preview ' + (i + 1)" />
+                    <button type="button" class="text-button" (click)="removeAdminImage(i)">Remove</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="admin-form-actions">
+                <button class="primary" type="button" (click)="saveProduct()">{{ adminProductFormMode === 'add' ? 'Save Product' : 'Update Product' }}</button>
+                <button class="secondary" type="button" (click)="resetAdminProductForm()">Reset</button>
+              </div>
+            </div>
+
+            <div class="admin-products-grid">
+              <div class="admin-product-row" *ngFor="let product of adminFilteredProducts">
+                <div class="admin-product-thumb">
+                  <img [src]="product.image || product.images[0]" [alt]="product.name" />
+                </div>
+                <div class="admin-product-info">
+                  <h5>{{ product.name }}</h5>
+                  <p>{{ product.category }}</p>
+                  <p>SKU: {{ product.sku }}</p>
+                </div>
+                <div class="admin-product-meta">
+                  <span>Stock: {{ product.stock }}</span>
+                  <span>Price: ₹{{ getProductDisplayPrice(product) }}</span>
+                </div>
+                <div class="admin-product-actions">
+                  <button class="secondary" type="button" (click)="viewProduct(product)">View</button>
+                  <button class="secondary" type="button" (click)="openEditProduct(product)">Edit</button>
+                  <button class="text-button" type="button" (click)="deleteProduct(product)">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-order-management-section">
+            <h4>Order Management</h4>
+            <div *ngIf="adminOrders.length === 0" class="empty-cart">
+              <p>No orders available.</p>
+            </div>
+            <div *ngIf="adminOrders.length > 0" class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Products</th>
+                    <th>Total</th>
+                    <th>Payment</th>
+                    <th>Payment Proof</th>
+                    <th>Address</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let order of adminOrders">
+                    <td>{{ order.orderId }}</td>
+                    <td>{{ order.customer.name }}</td>
+                    <td>{{ getProductsSummary(order) }}</td>
+                    <td>₹{{ order.totalAmount }}</td>
+                    <td>
+                      <strong>{{ order.payment.status }}</strong>
+                      <div>{{ order.payment.method }}</div>
+                      <small *ngIf="order.payment.rejectionReason">{{ order.payment.rejectionReason }}</small>
+                    </td>
+                    <td>
+                      <a *ngIf="order.payment.paymentScreenshot" [href]="order.payment.paymentScreenshot" target="_blank" rel="noopener noreferrer">
+                        <img [src]="order.payment.paymentScreenshot" alt="Payment screenshot for order {{ order.orderId }}" style="display: block; width: 160px; max-height: 180px; object-fit: contain; margin-bottom: 6px;" />
+                        Open full screenshot
+                      </a>
+                      <span *ngIf="!order.payment.paymentScreenshot">No screenshot</span>
+                      <div *ngIf="order.payment.status === 'Verification Pending'" class="payment-review-actions">
+                        <button type="button" class="primary" (click)="verifyPayment(order)">Verify</button>
+                        <input
+                          [(ngModel)]="adminRejectionReasons[order.orderId]"
+                          [name]="'rejection_' + order.orderId"
+                          placeholder="Rejection reason (optional)"
+                        />
+                        <button type="button" class="secondary" (click)="rejectPayment(order)">Reject</button>
+                      </div>
+                    </td>
+                    <td>{{ order.address.houseNumber }}, {{ order.address.street }}, {{ order.address.city }}</td>
+                    <td>{{ order.createdAt | date: 'mediumDate' }}</td>
+                    <td>
+                      <div class="status-stack">
+                        <select [ngModel]="order.orderStatus" (ngModelChange)="updateOrderStatus(order, $event)">
+                          <option value="Pending">Pending</option>
+                          <option value="Confirmed">Confirmed</option>
+                          <option value="Processing">Processing</option>
+                          <option value="Shipped">Shipped</option>
+                          <option value="Delivered">Delivered</option>
+                        </select>
+                        <div class="tracking-input-row">
+                          <input
+                            type="url"
+                            [ngModel]="trackingDrafts[order.orderId] || order.trackingLink || ''"
+                            (ngModelChange)="updateTrackingLink(order, $event)"
+                            placeholder="Tracking link"
+                          />
+                          <button type="button" class="secondary" (click)="saveTrackingLink(order)">Save</button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
