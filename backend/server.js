@@ -30,7 +30,7 @@ const getPublicImageUrl = (imagePath) => {
   }
 
   if (imagePath.startsWith('/uploads/')) {
-    return `http://localhost:${PORT}${imagePath}`;
+    return imagePath;
   }
 
   return imagePath;
