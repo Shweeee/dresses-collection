@@ -15,8 +15,8 @@ const DUMMY_UPI_ID = 'yourshop@upi';
 const DELIVERY_CHARGE = 99;
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 const AUTH_TOKEN_TTL_MS = 1000 * 60 * 60 * 12;
-const ADMIN_USERNAME = 'Muruganuma';
-const ADMIN_PASSWORD = 'Muruganuma@20';
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'Muruganuma';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'Muruganuma@20';
 const ADMIN_TOKEN_STORAGE = new Map();
 const USER_TOKEN_STORAGE = new Map();
 
