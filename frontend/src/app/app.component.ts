@@ -1,4 +1,4 @@
-﻿import { Component, OnDestroy, OnInit } from '@angular/core';
+﻿import { Component, isDevMode, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -265,8 +265,8 @@ export class AppComponent implements OnInit, OnDestroy {
     ? 'http://localhost:3000'
     : 'https://dresses-collection-backend-8672.onrender.com';
   readonly homeFeatureImage = `${this.apiBaseUrl}/uploads/dp/WhatsApp Image 2026-09-27 at 1.27.21 PM.jpeg`;
-  readonly upiId = 'snehamurugan202002@oksbi';
-  readonly upiName = 'Muruganuma';
+  readonly upiId = 'mswetha044@okicici';
+  readonly upiName = 'Swetha';
   readonly paymentQrImage = `${this.apiBaseUrl}/uploads/scanner.jpeg`;
   readonly deliveryCharge = 99;
   readonly categoryDetailsFields = CATEGORY_DETAILS_FIELDS;
@@ -771,13 +771,30 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   openUpiApp() {
-    const amount = Number(this.finalAmount || 0);
-    const paymentUrl = `upi://pay?pa=${encodeURIComponent(this.upiId)}&pn=${encodeURIComponent(this.upiName)}&am=${amount}&cu=INR&tn=${encodeURIComponent('Dress Purchase')}`;
+    const amount = this.finalAmount.toFixed(2);
+    const paymentUrl = `upi://pay?pa=${encodeURIComponent(this.upiId)}&pn=${encodeURIComponent(this.upiName)}&am=${amount}&cu=INR`;
+
+    if (isDevMode()) {
+      console.debug('[payment] UPI handoff requested', {
+        amount,
+        currency: 'INR',
+        paymentStatus: 'handoff-requested'
+      });
+    }
 
     try {
       window.location.href = paymentUrl;
-      this.showToast('Opening your UPI app to complete payment.');
+      this.showToast(`Confirm the payment amount of ₹${this.finalAmount} in your UPI app.`);
     } catch (error) {
+      if (isDevMode()) {
+        console.error('[payment] UPI handoff failed', {
+          amount,
+          currency: 'INR',
+          errorCode: 'UPI_INTENT_LAUNCH_FAILED',
+          errorMessage: error instanceof Error ? error.message : 'Unknown UPI intent launch error',
+          paymentStatus: 'handoff-failed'
+        });
+      }
       this.showToast('Unable to open UPI app. Please copy the UPI ID and pay manually.');
     }
   }

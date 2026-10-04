@@ -11,7 +11,7 @@ const ORDERS_FILE = path.join(DATA_DIR, 'orders.json');
 const PRODUCTS_FILE = path.join(DATA_DIR, 'products.json');
 const USERS_FILE = path.join(DATA_DIR, 'users.json');
 const UPLOADS_DIR = path.join(__dirname, 'uploads', 'products');
-const DUMMY_UPI_ID = 'snehamurugan202002@oksbi';
+const DUMMY_UPI_ID = 'mswetha044@okicici';
 const DELIVERY_CHARGE = 99;
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 const AUTH_TOKEN_TTL_MS = 1000 * 60 * 60 * 12;
@@ -1101,6 +1101,15 @@ app.post('/api/orders', (req, res) => {
 
     existingOrders.push(orderRecord);
     writeOrders(existingOrders);
+
+    if (process.env.NODE_ENV === 'development') {
+      console.debug('[payment] local order created', {
+        orderId: orderRecord.orderId,
+        amount: orderRecord.totalAmount,
+        currency: 'INR',
+        paymentStatus: orderRecord.payment.status
+      });
+    }
 
     const productCatalogLatest = readProducts();
     for (const item of normalizedItems) {

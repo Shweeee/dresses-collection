@@ -6,7 +6,7 @@
     "description": "A statement gown with layered detailing, premium satin finish, and multiple color-ready styling options for festive evenings.",
     "price": 1699,
     "discountPrice": 1199,
-    "stock": 20,
+    "stock": 50,
     "sku": "ROSE-SET-07",
     "images": [
       "http://localhost:3000/uploads/products/product-1/WhatsApp Image 2026-09-17 at 7.45.26 PM (1).jpeg",
@@ -44,7 +44,7 @@
     "description": "Exclusive arrival. Package contains crop top, blouse and dupatta with elegant premium bead work and a shimmering sequin net skirt.",
     "price": 1799,
     "discountPrice": 1399,
-    "stock": 20,
+    "stock": 50,
     "sku": "CROP-SET-02",
     "images": [
       "http://localhost:3000/uploads/products/product-2/WhatsApp Image 2026-09-20 at 11.09.11 AM.jpeg",
@@ -86,7 +86,7 @@
     "description": "Launching exclusive party wear draping style gown outfit with premium blooming vichitra silk, bead work on yoke, dupatta and belt for multiple styling options.",
     "price": 1499,
     "discountPrice": 1099,
-    "stock": 20,
+    "stock": 50,
     "sku": "BLOOM-GOWN-03",
     "images": [
       "http://localhost:3000/uploads/products/product-3/WhatsApp Image 2026-09-27 at 3.58.43 PM (1).jpeg",
@@ -129,7 +129,7 @@
     "description": "Top trending festival collection featuring sequins embroidery gown with coat and dupatta for glamour and elegance in the festive season.",
     "price": 1799,
     "discountPrice": 1299,
-    "stock": 20,
+    "stock": 50,
     "sku": "MK-243",
     "images": [
       "http://localhost:3000/uploads/products/product-5/WhatsApp Image 2026-09-19 at 7.41.38 AM.jpeg",
@@ -168,7 +168,7 @@
     "description": "Grand launch premium south salsa silk gown with dupatta, foil work detailing, and elegant festive finishing.",
     "price": 1899,
     "discountPrice": 1499,
-    "stock": 20,
+    "stock": 50,
     "sku": "AV-285",
     "images": [
       "http://localhost:3000/uploads/products/product-6/WhatsApp Image 2026-09-27 at 4.05.02 PM.jpeg",
@@ -208,7 +208,7 @@
     "description": "South special edition dress with a rich jet-black solid base and printed accents, designed for an elegant royal ethnic look with comfort.",
     "price": 1899,
     "discountPrice": 1499,
-    "stock": 20,
+    "stock": 50,
     "sku": "REVATI-008",
     "images": [
       "http://localhost:3000/uploads/products/product-8/WhatsApp Image 2026-09-12 at 12.14.55 PM.jpeg",
@@ -248,7 +248,7 @@
     "description": "Unveiling our stunning cape top in radiant colours, paired with a skirt and dupatta for wedding functions, parties, and festive celebrations. This standout ensemble delivers elegance and comfort for any special occasion.",
     "price": 1399,
     "discountPrice": 1099,
-    "stock": 20,
+    "stock": 50,
     "sku": "TRD-010",
     "images": [
       "http://localhost:3000/uploads/products/product-10/WhatsApp Image 2026-09-07 at 11.41.55 AM.jpeg",
@@ -307,7 +307,7 @@
     "description": "Premium handwork gown with dupatta in premium rangoli silk fabric, heavy flair, original handwork, and rich festive finish for weddings and grand occasions.",
     "price": 1599,
     "discountPrice": 1199,
-    "stock": 20,
+    "stock": 50,
     "sku": "TRD-011",
     "images": [
       "http://localhost:3000/uploads/products/product-11/WhatsApp Image 2026-09-05 at 9.36.43 AM (1).jpeg",
@@ -348,7 +348,7 @@
     "description": "👉👗💥Launching New Festival Kurthi Vel Design\n\n👗Wear the Power of Murugan Vel. ✨👗\n🔸Fabric details😘\nJacquard Silk cotton\nComplete lining With Back Side pattern And Dori Or Funka\nDupatta Length: 2.25 Meter\nKurti Length - 46+ inches\nWeight: 430g\n\nSize: S(36), M(38), L(40), XL(42), XXL(44), 3XL(46)\n\nPrice: ₹999 | Free shipping\n\n4 Colour Available\n\n💕One Level Up💕\n👌A One Quality👌🛍️💕",
     "price": 1199,
     "discountPrice": 899,
-    "stock": 20,
+    "stock": 50,
     "sku": "KURTI-VEL-2414",
     "images": [
       "http://localhost:3000/uploads/products/products-13/WhatsApp Image 2026-09-27 at 1.25.24 PM (1).jpeg",
@@ -393,7 +393,7 @@
     "description": "Exclusive arrival. Launching traditional outfit with a stunning silk cotton kurti set featuring beautiful zari work, contrast border dupatta, and a refined festive finish for temple and festival wear.",
     "price": 1199,
     "discountPrice": 899,
-    "stock": 20,
+    "stock": 50,
     "sku": "TRD-014",
     "images": [
       "http://localhost:3000/uploads/products/product-14/WhatsApp Image 2026-09-27 at 1.15.03 PM.jpeg",
@@ -448,7 +448,7 @@
     "description": "This gown made from jacquard weaving zari butti fabric and soft silk dupatta with zari border. Stylish 3 color collection designed for festive wear with a graceful traditional look.",
     "price": 1199,
     "discountPrice": 999,
-    "stock": 18,
+    "stock": 50,
     "sku": "TRD-015",
     "images": [
       "http://localhost:3000/uploads/products/product-15/WhatsApp Image 2026-09-27 at 1.16.23 PM (1).jpeg",
@@ -490,7 +490,7 @@
     "description": "This 3-piece ethnic ensemble features delicate floral threadwork, beadwork, and vine embroidery across the fabric. With beautiful beadwork all over the top and dupatta, it is perfect for Haldi ceremonies, festive celebrations, and wedding functions.",
     "price": 1799,
     "discountPrice": 1499,
-    "stock": 18,
+    "stock": 50,
     "sku": "TRD-016",
     "images": [
       "http://localhost:3000/uploads/products/product-16/WhatsApp Image 2026-09-27 at 2.34.39 PM.jpeg",
@@ -534,7 +534,7 @@
     "description": "Vibe your Diwali festival with this beautiful flared outfit: a premium South Silk gown with dupatta and belt, finished with a rich festive look.",
     "price": 1699,
     "discountPrice": 1399,
-    "stock": 20,
+    "stock": 50,
     "sku": "TRD-017",
     "images": [
       "http://localhost:3000/uploads/products/product-17/WhatsApp Image 2026-09-27 at 3.54.43 PM (1).jpeg",
@@ -579,7 +579,7 @@
     "description": "A designer princess party-wear midi gown crafted from premium dual-tone tissue with zari butti work. The back-side corset tie-up offers an adjustable fit for a graceful, queen-worthy look.",
     "price": 999,
     "discountPrice": 799,
-    "stock": 20,
+    "stock": 50,
     "sku": "GWN-018",
     "images": [
       "http://localhost:3000/uploads/products/product-18/WhatsApp Image 2026-09-27 at 4.01.27 PM (1).jpeg",
@@ -621,7 +621,7 @@
     "description": "A two-piece lehenga set in a rich, beautiful color, designed to turn heads at festive occasions. The blouse features an exquisite floral vine pattern embroidered in shimmering gold thread.",
     "price": 1399,
     "discountPrice": 999,
-    "stock": 20,
+    "stock": 50,
     "sku": "TRD-019",
     "images": [
       "http://localhost:3000/uploads/products/product-19/WhatsApp Image 2026-09-27 at 4.10.15 PM (1).jpeg",
@@ -669,7 +669,7 @@
     "description": "Exclusive trending designer gown with heavy sequence embroidery-work dupatta. Fully stitched and ready to wear, paired with a micro-cotton pant for a complete festive outfit.",
     "price": 1899,
     "discountPrice": 1599,
-    "stock": 20,
+    "stock": 50,
     "sku": "GWN-020",
     "images": [
       "http://localhost:3000/uploads/products/product-20/WhatsApp Image 2026-09-27 at 4.17.27 PM (1).jpeg",
@@ -725,7 +725,7 @@
     "description": "Launching an exclusive festival and functional-wear maxi gown in premium Space Silk, featuring beautiful mirror handwork on the neck. This own-modeling photoshoot design is ready to dispatch.",
     "price": 999,
     "discountPrice": 799,
-    "stock": 20,
+    "stock": 50,
     "sku": "GWN-021",
     "images": [
       "http://localhost:3000/uploads/products/product-21/WhatsApp Image 2026-09-27 at 4.21.28 PM (1).jpeg",
@@ -770,7 +770,7 @@
     "description": "Launching our beautiful gown and coat outfit, designed to be styled in three different ways. Made with Vichithra Silk and finished with heavy beadwork on the coat, this look is perfect for parties, functions, and special occasions.",
     "price": 950,
     "discountPrice": 780,
-    "stock": 18,
+    "stock": 50,
     "sku": "GWN-022",
     "images": [
       "http://localhost:3000/uploads/products/product-22/WhatsApp Image 2026-09-27 at 4.28.35 PM.jpeg",
@@ -813,7 +813,7 @@
     "description": "A comfortable couple combo made from all-cotton fabric, available in Orange, Ink Blue, and Brown. Choose the women's set with men's shirt for 1999, or add men's pants for the full combo at 2599.",
     "price": 1999,
     "discountPrice": 1599,
-    "stock": 20,
+    "stock": 50,
     "sku": "CPL-023",
     "images": [
       "http://localhost:3000/uploads/products/product-23/WhatsApp Image 2026-09-27 at 4.28.16 PM.jpeg",
@@ -850,7 +850,7 @@
     "description": "A dreamy floral dress for your little fashionista, designed with a flared princess fit for birthdays, weddings, and special occasions.",
     "price": 1199,
     "discountPrice": 899,
-    "stock": 20,
+    "stock": 50,
     "sku": "GWN-024",
     "images": [
       "http://localhost:3000/uploads/products/product-24/WhatsApp Image 2026-09-27 at 4.33.38 PM (1).jpeg",
@@ -890,7 +890,7 @@
     "description": "A couple combo featuring a beautiful heavy Space Silk lehenga choli set with double frill and a matching cotton men's shirt and pant. The women's set includes a fully stitched sequins-embroidered blouse, lehenga, dupatta, and belt. Choose the women's set with men's shirt for 1999, or the set with men's shirt and pant for 2599.",
     "price": 2199,
     "discountPrice": 1899,
-    "stock": 20,
+    "stock": 50,
     "sku": "CPL-025",
     "images": [
       "http://localhost:3000/uploads/products/product-25/WhatsApp Image 2026-09-27 at 4.36.54 PM.jpeg",
@@ -938,7 +938,7 @@
     "description": "A mix-and-match outfit featuring a cotton sleeveless tank crop top, a cotton-blend shirt, and relaxed-fit denim jeans. Available in Blue with White, Pink with White, Yellow with Black, and Light Blue with White combinations.",
     "price": 1699,
     "discountPrice": 1299,
-    "stock": 20,
+    "stock": 50,
     "sku": "CPL-026",
     "images": [
       "http://localhost:3000/uploads/products/product-26/WhatsApp Image 2026-09-27 at 4.41.22 PM (1).jpeg",
@@ -987,7 +987,7 @@
     "description": "A Khadi cotton saree paired with a stitched pure Khadi cotton blouse featuring beautiful heavy handwork. Design name: B-1. Ready to ship.",
     "price": 1599,
     "discountPrice": 1399,
-    "stock": 20,
+    "stock": 50,
     "sku": "SAR-027",
     "images": [
       "http://localhost:3000/uploads/products/product-27/WhatsApp Image 2026-09-27 at 4.45.06 PM.jpeg",
@@ -1033,17 +1033,17 @@
     "description": "Presenting a beautiful cotton saree with a pure Khadi cotton blouse featuring heavy handwork. Design name: B-1. Ready to ship.",
     "price": 1699,
     "discountPrice": 1399,
-    "stock": 20,
+    "stock": 50,
     "sku": "SAR-028",
     "images": [
       "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.53 PM (1).jpeg",
       "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.54 PM (1).jpeg",
       "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.54 PM (2).jpeg",
-     "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.55 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.55 PM (1).jpeg",
       "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.55 PM (2).jpeg",
       "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.55 PM (3).jpeg",
       "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.55 PM.jpeg"
-   ],
+    ],
     "image": "http://localhost:3000/uploads/products/product-28/WhatsApp Image 2026-09-27 at 5.06.53 PM (1).jpeg",
     "sizes": [
       "Free Size"
@@ -1077,7 +1077,7 @@
     "description": "Launch of an exclusive designer premium-quality pure Kanjivaram silk fully stitched lehenga with a fully stitched designer maggam-work blouse and embroidered dupatta. Quality product.",
     "price": 1999,
     "discountPrice": 1799,
-    "stock": 20,
+    "stock": 50,
     "sku": "HFS-029",
     "images": [
       "http://localhost:3000/uploads/products/product-29/WhatsApp Image 2026-09-27 at 5.09.01 PM.jpeg",
@@ -1108,7 +1108,7 @@
     "name": "Rich Satin Party Wear Shirt",
     "category": "Men's Shirts",
     "description": "Rich satin party-wear shirt with a solid pattern and long sleeves. Net quantity: 1. Made in India.",
-    "price":699,
+    "price": 699,
     "discountPrice": 500,
     "stock": 50,
     "sku": "MNS-030",
@@ -1130,7 +1130,8 @@
       "L",
       "XL",
       "XXL",
-      "XXXL"    ],
+      "XXXL"
+    ],
     "colors": [
       "Purple",
       "Light Pink",
@@ -1160,13 +1161,12 @@
     "description": "New kids lehenga choli with full flair as shown in the photos. The fully stitched lehenga is made from pure heavy Lichi silk with all-over zari weaving and a contrast heavy zari border with canvas finish. The fully stitched pure silk blouse has all-over embroidery and a back-side chain. The pure silk dupatta has an elegant heavy embroidery border on one side. Heavy crepe lining runs fully to the bottom. Ready to ship; next-day pickup booking is compulsory.",
     "price": 1999,
     "discountPrice": 1499,
-    "stock": 20,
+    "stock": 50,
     "sku": "KID-031",
     "images": [
-     
-    "http://localhost:3000/uploads/products/product-31/WhatsApp Image 2026-09-27 at 5.16.46 PM (1).jpeg",
-    "http://localhost:3000/uploads/products/product-31/WhatsApp Image 2026-09-27 at 5.16.47 PM (1).jpeg",
-     "http://localhost:3000/uploads/products/product-31/WhatsApp Image 2026-09-27 at 5.16.47 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-31/WhatsApp Image 2026-09-27 at 5.16.46 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-31/WhatsApp Image 2026-09-27 at 5.16.47 PM (1).jpeg",
+      "http://localhost:3000/uploads/products/product-31/WhatsApp Image 2026-09-27 at 5.16.47 PM.jpeg",
       "http://localhost:3000/uploads/products/product-31/WhatsApp Image 2026-09-27 at 5.16.48 PM (1).jpeg"
     ],
     "image": "http://localhost:3000/uploads/products/product-31/WhatsApp Image 2026-09-27 at 5.16.45 PM (1).jpeg",
@@ -1207,13 +1207,13 @@
     "description": "A red cotton dress with delicate floral embroidery, a square neckline, puff sleeves, and a flowing flared skirt. Available in sizes XS to XXL.",
     "price": 999,
     "discountPrice": 799,
-    "stock": 20,
+    "stock": 50,
     "sku": "MAT-032",
     "images": [
-         "http://localhost:3000/uploads/products/product-32/WhatsApp Image 2026-09-27 at 5.22.46 PM (2).jpeg",
-  "http://localhost:3000/uploads/products/product-32/WhatsApp Image 2026-09-27 at 5.22.45 PM.jpeg",
+      "http://localhost:3000/uploads/products/product-32/WhatsApp Image 2026-09-27 at 5.22.46 PM (2).jpeg",
+      "http://localhost:3000/uploads/products/product-32/WhatsApp Image 2026-09-27 at 5.22.45 PM.jpeg",
       "http://localhost:3000/uploads/products/product-32/WhatsApp Image 2026-09-27 at 5.22.46 PM (1).jpeg",
-     "http://localhost:3000/uploads/products/product-32/WhatsApp Image 2026-09-27 at 5.22.46 PM.jpeg"
+      "http://localhost:3000/uploads/products/product-32/WhatsApp Image 2026-09-27 at 5.22.46 PM.jpeg"
     ],
     "image": "http://localhost:3000/uploads/products/product-32/WhatsApp Image 2026-09-27 at 5.22.44 PM.jpeg",
     "sizes": [
