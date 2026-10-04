@@ -772,7 +772,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   openUpiApp() {
     const amount = this.finalAmount.toFixed(2);
-    const paymentUrl = `upi://pay?pa=${encodeURIComponent(this.upiId)}&pn=${encodeURIComponent(this.upiName)}&am=${amount}&cu=INR`;
+    const paymentUrl = `upi://pay?pa=${encodeURIComponent(this.upiId)}&pn=${encodeURIComponent(this.upiName)}&cu=INR`;
 
     if (isDevMode()) {
       console.debug('[payment] UPI handoff requested', {
@@ -784,7 +784,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     try {
       window.location.href = paymentUrl;
-      this.showToast(`Confirm the payment amount of ₹${this.finalAmount} in your UPI app.`);
+      this.showToast(`Enter exactly ₹${this.finalAmount} in your UPI app before paying.`);
     } catch (error) {
       if (isDevMode()) {
         console.error('[payment] UPI handoff failed', {
