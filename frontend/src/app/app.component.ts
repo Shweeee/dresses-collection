@@ -265,7 +265,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ? 'http://localhost:3000'
     : 'https://dresses-collection-backend-8672.onrender.com';
   readonly homeFeatureImage = `${this.apiBaseUrl}/uploads/dp/WhatsApp Image 2026-09-27 at 1.27.21 PM.jpeg`;
-  readonly upiId = 'mswetha044@okicici';
+  readonly upiId = 'snehamurugan202002@oksbi';
   readonly upiName = 'Muruganuma';
   readonly paymentQrImage = `${this.apiBaseUrl}/uploads/scanner.jpeg`;
   readonly deliveryCharge = 99;
