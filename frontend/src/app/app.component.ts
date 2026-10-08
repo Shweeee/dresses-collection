@@ -89,6 +89,50 @@ interface OrderResponse {
   createdAt: string;
 }
 
+interface RazorpayOrderResponse {
+  orderId: string;
+  keyId: string;
+  gatewayOrderId: string;
+  amount: number;
+  currency: string;
+}
+
+interface RazorpayCheckoutPayment {
+  razorpay_order_id: string;
+  razorpay_payment_id: string;
+  razorpay_signature: string;
+}
+
+interface RazorpayCheckoutError {
+  code?: string;
+  description?: string;
+  source?: string;
+  step?: string;
+  reason?: string;
+  metadata?: { order_id?: string; payment_id?: string };
+}
+
+interface RazorpayCheckoutOptions {
+  key: string;
+  amount: number;
+  currency: string;
+  name: string;
+  description: string;
+  order_id: string;
+  prefill: { name: string; email: string; contact: string };
+  handler: (payment: RazorpayCheckoutPayment) => void;
+  modal: { ondismiss: () => void };
+}
+
+interface RazorpayCheckoutInstance {
+  open(): void;
+  on(event: 'payment.failed', handler: (response: { error: RazorpayCheckoutError }) => void): void;
+}
+
+interface RazorpayCheckoutConstructor {
+  new(options: RazorpayCheckoutOptions): RazorpayCheckoutInstance;
+}
+
 interface AdminProductForm {
   name: string;
   category: string;
@@ -206,9 +250,10 @@ export class AppComponent implements OnInit, OnDestroy {
     city: '',
     state: '',
     pincode: '',
-    paymentMethod: 'UPI / GPay'
+    paymentMethod: 'Razorpay'
   };
   paymentStep = false;
+  isRazorpayLoading = false;
   paymentProof = {
     utrNumber: '',
     paymentScreenshot: ''
@@ -770,6 +815,179 @@ export class AppComponent implements OnInit, OnDestroy {
     this.paymentStep = true;
   }
 
+  startRazorpayPayment() {
+    if (this.isRazorpayLoading || !this.isCheckoutFormValid()) {
+      return;
+    }
+
+    this.isRazorpayLoading = true;
+    const payload = {
+      customer: {
+        name: this.checkoutForm.customerName.trim(),
+        mobile: this.checkoutForm.mobileNumber.trim(),
+        email: this.checkoutForm.email.trim()
+      },
+      address: {
+        houseNumber: this.checkoutForm.houseNumber.trim(),
+        street: this.checkoutForm.street.trim(),
+        area: this.checkoutForm.area.trim(),
+        city: this.checkoutForm.city.trim(),
+        state: this.checkoutForm.state.trim(),
+        pincode: this.checkoutForm.pincode.trim()
+      },
+      items: this.cart.map((item) => ({
+        productId: item.product.id,
+        quantity: item.quantity,
+        selectedSize: item.selectedSize || '',
+        selectedColor: item.selectedColor || ''
+      }))
+    };
+
+    this.http.post<RazorpayOrderResponse>(`${this.apiBaseUrl}/api/payments/razorpay/orders`, payload).subscribe({
+      next: async (gatewayOrder) => {
+        try {
+          await this.loadRazorpayCheckout();
+          const RazorpayCheckout = (window as typeof window & { Razorpay?: RazorpayCheckoutConstructor }).Razorpay;
+          if (!RazorpayCheckout) {
+            throw new Error('Razorpay Checkout did not load.');
+          }
+
+          const checkout = new RazorpayCheckout({
+            key: gatewayOrder.keyId,
+            amount: gatewayOrder.amount,
+            currency: gatewayOrder.currency,
+            name: 'Dresses Collections',
+            description: `Order ${gatewayOrder.orderId}`,
+            order_id: gatewayOrder.gatewayOrderId,
+            prefill: {
+              name: this.checkoutForm.customerName.trim(),
+              email: this.checkoutForm.email.trim(),
+              contact: `+91${this.checkoutForm.mobileNumber.trim()}`
+            },
+            handler: (payment) => {
+              void this.verifyRazorpayPayment(gatewayOrder, payment);
+            },
+            modal: {
+              ondismiss: () => {
+                this.isRazorpayLoading = false;
+              }
+            }
+          });
+
+          checkout.on('payment.failed', (response) => {
+            this.isRazorpayLoading = false;
+            if (isDevMode()) {
+              console.error('[payment] Razorpay Checkout reported failure', {
+                orderId: gatewayOrder.orderId,
+                gatewayOrderId: response.error.metadata?.order_id || gatewayOrder.gatewayOrderId,
+                gatewayPaymentId: response.error.metadata?.payment_id || '',
+                amount: gatewayOrder.amount / 100,
+                currency: gatewayOrder.currency,
+                errorCode: response.error.code || 'PAYMENT_FAILED',
+                errorMessage: response.error.description || 'Razorpay reported a payment failure.',
+                errorSource: response.error.source || '',
+                errorStep: response.error.step || '',
+                paymentStatus: 'failed'
+              });
+            }
+            this.showToast(response.error.description || 'Razorpay could not complete this payment. Please retry.');
+          });
+
+          if (isDevMode()) {
+            console.debug('[payment] Razorpay Checkout opened', {
+              orderId: gatewayOrder.orderId,
+              gatewayOrderId: gatewayOrder.gatewayOrderId,
+              amount: gatewayOrder.amount / 100,
+              amountPaise: gatewayOrder.amount,
+              currency: gatewayOrder.currency,
+              paymentStatus: 'checkout-opened'
+            });
+          }
+
+          this.isRazorpayLoading = false;
+          checkout.open();
+        } catch (error) {
+          this.isRazorpayLoading = false;
+          if (isDevMode()) {
+            console.error('[payment] Unable to open Razorpay Checkout', {
+              orderId: gatewayOrder.orderId,
+              amount: gatewayOrder.amount / 100,
+              currency: gatewayOrder.currency,
+              errorCode: 'CHECKOUT_LOAD_FAILED',
+              errorMessage: error instanceof Error ? error.message : 'Unknown Checkout error',
+              paymentStatus: 'checkout-not-opened'
+            });
+          }
+          this.showToast('Unable to open Razorpay Checkout. Please retry or choose another payment method.');
+        }
+      },
+      error: (error) => {
+        this.isRazorpayLoading = false;
+        const gatewayError = error?.error?.gatewayError;
+        if (isDevMode()) {
+          console.error('[payment] Razorpay order creation failed', {
+            amount: this.finalAmount,
+            currency: 'INR',
+            errorCode: gatewayError?.errorCode || error?.status || 'ORDER_CREATION_FAILED',
+            errorMessage: gatewayError?.errorMessage || error?.error?.message || 'Unable to create Razorpay order.',
+            paymentStatus: 'order-creation-failed'
+          });
+        }
+        this.showToast(error?.error?.message || 'Unable to start Razorpay payment.');
+      }
+    });
+  }
+
+  private loadRazorpayCheckout(): Promise<void> {
+    const checkoutWindow = window as typeof window & { Razorpay?: RazorpayCheckoutConstructor };
+    if (checkoutWindow.Razorpay) {
+      return Promise.resolve();
+    }
+
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error('Razorpay Checkout script failed to load.'));
+      document.body.appendChild(script);
+    });
+  }
+
+  private verifyRazorpayPayment(gatewayOrder: RazorpayOrderResponse, payment: RazorpayCheckoutPayment): void {
+    this.isRazorpayLoading = true;
+    this.http.post<OrderResponse & { emailStatus?: { sent: boolean; recipient?: string } }>(
+      `${this.apiBaseUrl}/api/payments/razorpay/verify`,
+      {
+        orderId: gatewayOrder.orderId,
+        razorpay_order_id: payment.razorpay_order_id,
+        razorpay_payment_id: payment.razorpay_payment_id,
+        razorpay_signature: payment.razorpay_signature
+      }
+    ).subscribe({
+      next: (order) => {
+        this.isRazorpayLoading = false;
+        this.handleOrderPlaced(order);
+      },
+      error: (error) => {
+        this.isRazorpayLoading = false;
+        const gatewayError = error?.error?.gatewayError;
+        if (isDevMode()) {
+          console.error('[payment] Razorpay server verification failed', {
+            orderId: gatewayOrder.orderId,
+            gatewayOrderId: gatewayOrder.gatewayOrderId,
+            gatewayPaymentId: payment.razorpay_payment_id,
+            amount: gatewayOrder.amount / 100,
+            currency: gatewayOrder.currency,
+            errorCode: gatewayError?.errorCode || error?.status || 'PAYMENT_VERIFICATION_FAILED',
+            errorMessage: gatewayError?.errorMessage || error?.error?.message || 'Payment verification failed.',
+            paymentStatus: 'verification-failed'
+          });
+        }
+        this.showToast(error?.error?.message || 'Payment was not verified. Contact support before retrying.');
+      }
+    });
+  }
+
   openUpiApp() {
     const amount = this.finalAmount.toFixed(2);
     const paymentUrl = `upi://pay?pa=${encodeURIComponent(this.upiId)}&pn=${encodeURIComponent(this.upiName)}&cu=INR`;
@@ -873,35 +1091,41 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.http.post<OrderResponse & { emailStatus?: { sent: boolean; recipient?: string } }>(`${this.apiBaseUrl}/api/orders`, payload).subscribe({
       next: (createdOrder) => {
-        this.latestOrder = this.normalizeOrder(createdOrder);
-        this.orderPlaced = true;
-        this.orderHistory = this.sortOrdersNewestFirst([this.latestOrder, ...this.orderHistory]);
-        this.adminOrders = [...this.orderHistory];
-        this.profileMobile = this.latestOrder.customer.mobile;
-        this.profileOrders = this.orderHistory.filter((order) => order.customer.mobile === this.latestOrder?.customer.mobile);
-        this.cart = [];
-        this.paymentStep = false;
-        this.paymentProof = { utrNumber: '', paymentScreenshot: '' };
-        this.updateCartSummary();
-        this.currentView = 'orders';
-
-        if (createdOrder.emailStatus?.sent) {
-          this.showToast(`Order placed successfully. Confirmation email sent to ${createdOrder.emailStatus.recipient}.`);
-        } else {
-          this.showToast('Order placed successfully. A confirmation email will be sent once the email service is configured.');
-        }
-
-        this.orderConfirmationMessage =
-          this.checkoutForm.paymentMethod === 'Cash on Delivery'
-            ? 'Your COD order has been placed successfully.'
-            : 'Your order has been received. Your payment is being verified. We will confirm your order after payment verification.';
-
-        this.loadProducts();
+        this.handleOrderPlaced(createdOrder);
       },
       error: (error) => {
         this.showToast(error?.error?.message || 'Unable to place order.');
       }
     });
+  }
+
+  private handleOrderPlaced(createdOrder: OrderResponse & { emailStatus?: { sent: boolean; recipient?: string } }): void {
+    this.latestOrder = this.normalizeOrder(createdOrder);
+    this.orderPlaced = true;
+    this.orderHistory = this.sortOrdersNewestFirst([this.latestOrder, ...this.orderHistory]);
+    this.adminOrders = [...this.orderHistory];
+    this.profileMobile = this.latestOrder.customer.mobile;
+    this.profileOrders = this.orderHistory.filter((order) => order.customer.mobile === this.latestOrder?.customer.mobile);
+    this.cart = [];
+    this.paymentStep = false;
+    this.paymentProof = { utrNumber: '', paymentScreenshot: '' };
+    this.updateCartSummary();
+    this.currentView = 'orders';
+
+    if (createdOrder.emailStatus?.sent) {
+      this.showToast(`Order placed successfully. Confirmation email sent to ${createdOrder.emailStatus.recipient}.`);
+    } else {
+      this.showToast('Order placed successfully. A confirmation email will be sent once the email service is configured.');
+    }
+
+    this.orderConfirmationMessage =
+      this.checkoutForm.paymentMethod === 'Cash on Delivery'
+        ? 'Your COD order has been placed successfully.'
+        : this.checkoutForm.paymentMethod === 'Razorpay'
+          ? 'Your Razorpay payment was verified and your order is confirmed.'
+          : 'Your order has been received. Your payment is being verified. We will confirm your order after payment verification.';
+
+    this.loadProducts();
   }
 
   verifyPayment(order: OrderResponse) {

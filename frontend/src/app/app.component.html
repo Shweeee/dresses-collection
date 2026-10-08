@@ -275,6 +275,15 @@
               </div>
             </div>
 
+            <div class="field-group full-span">
+              <label>Payment Method</label>
+              <select [(ngModel)]="checkoutForm.paymentMethod" name="paymentMethod">
+                <option value="Razorpay">Razorpay (Google Pay / UPI and other methods)</option>
+                <option value="UPI / GPay">UPI QR / direct UPI (manual verification)</option>
+                <option value="Cash on Delivery">Cash on Delivery</option>
+              </select>
+            </div>
+
             <div class="summary-card" *ngIf="cart.length > 0">
               <h4>Order Summary</h4>
               <div class="summary-list">
@@ -308,7 +317,15 @@
             </div>
 
             <div class="payment-step" *ngIf="paymentStep">
-              <h4>Payment Verification</h4>
+              <h4>{{ checkoutForm.paymentMethod === 'Razorpay' ? 'Razorpay Checkout' : 'Payment Verification' }}</h4>
+              <div *ngIf="checkoutForm.paymentMethod === 'Razorpay'">
+                <p class="payment-instruction">Razorpay will charge the displayed website total of ₹{{ finalAmount }}. Choose Google Pay / UPI in Razorpay Checkout.</p>
+                <button type="button" class="primary full-width" (click)="startRazorpayPayment()" [disabled]="isRazorpayLoading">
+                  {{ isRazorpayLoading ? 'Opening secure checkout...' : 'Pay ₹' + finalAmount + ' with Razorpay' }}
+                </button>
+              </div>
+
+              <ng-container *ngIf="checkoutForm.paymentMethod === 'UPI / GPay'">
               <div class="upi-box">
                 <div class="upi-header">
                   <span>UPI ID</span>
@@ -341,6 +358,7 @@
               <button class="primary full-width" type="button" (click)="placeOrder()" [disabled]="!isCheckoutFormValid()">
                 Verify & Place Order
               </button>
+              </ng-container>
             </div>
 
             <button *ngIf="!paymentStep" class="primary full-width" type="button" (click)="proceedToPayment()" [disabled]="!isCheckoutFormValid()">
