@@ -403,9 +403,13 @@
         <p>Your order ID is <strong>{{ latestOrder.orderId }}</strong>.</p>
         <p>Total paid: <strong>₹{{ latestOrder.totalAmount }}</strong></p>
         <p>Payment method: <strong>{{ latestOrder.payment.method }}</strong></p>
+        <a *ngIf="orderConfirmationWhatsAppUrl" class="primary" [href]="orderConfirmationWhatsAppUrl" target="_blank" rel="noopener noreferrer">
+          Send confirmation on WhatsApp
+        </a>
       </div>
 
       <div class="auth-card" *ngIf="!currentUser && !adminAuthenticated">
+        <p class="subtle-text">Login to place orders quickly, or create a new account in under a minute.</p>
         <div class="auth-toggle">
           <button type="button" class="secondary" [class.active]="authMode === 'login'" (click)="authMode = 'login'">Login</button>
           <button type="button" class="secondary" [class.active]="authMode === 'register'" (click)="authMode = 'register'">Register</button>

@@ -261,6 +261,7 @@ export class AppComponent implements OnInit, OnDestroy {
   orderPlaced = false;
   latestOrder: OrderResponse | null = null;
   orderConfirmationMessage = '';
+  orderConfirmationWhatsAppUrl = '';
   selectedSize = '';
   selectedColor = '';
   quantity = 1;
@@ -1118,7 +1119,10 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  private handleOrderPlaced(createdOrder: OrderResponse & { emailStatus?: { sent: boolean; recipient?: string } }): void {
+  private handleOrderPlaced(createdOrder: OrderResponse & {
+    emailStatus?: { sent: boolean; recipient?: string };
+    whatsappStatus?: { sent: boolean; orderId: string; contacts: Array<{ phone: string; url: string }> };
+  }): void {
     this.latestOrder = this.normalizeOrder(createdOrder);
     this.orderPlaced = true;
     this.orderHistory = this.sortOrdersNewestFirst([this.latestOrder, ...this.orderHistory]);
@@ -1130,6 +1134,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.paymentProof = { utrNumber: '', paymentScreenshot: '' };
     this.updateCartSummary();
     this.currentView = 'orders';
+    this.orderConfirmationWhatsAppUrl = createdOrder.whatsappStatus?.contacts?.[0]?.url || '';
 
     if (createdOrder.emailStatus?.sent) {
       this.showToast(`Order placed successfully. Confirmation email sent to ${createdOrder.emailStatus.recipient}.`);
@@ -1137,9 +1142,21 @@ export class AppComponent implements OnInit, OnDestroy {
       this.showToast('Order placed successfully. A confirmation email will be sent once the email service is configured.');
     }
 
+    if (this.orderConfirmationWhatsAppUrl) {
+      setTimeout(() => {
+        try {
+          window.open(this.orderConfirmationWhatsAppUrl, '_blank', 'noopener,noreferrer');
+        } catch (error) {
+          if (isDevMode()) {
+            console.warn('[whatsapp] Unable to auto-open order confirmation message', error);
+          }
+        }
+      }, 250);
+    }
+
     this.orderConfirmationMessage =
       this.checkoutForm.paymentMethod === 'Cash on Delivery'
-        ? 'Your COD order has been placed successfully.'
+        ? 'Your cash-on-delivery order is confirmed and will be delivered soon.'
         : this.checkoutForm.paymentMethod === 'Razorpay'
           ? 'Your Razorpay payment was verified and your order is confirmed.'
           : 'Your order has been received. Your payment is being verified. We will confirm your order after payment verification.';

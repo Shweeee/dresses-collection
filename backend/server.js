@@ -374,6 +374,38 @@ const sendTrackingUpdateEmail = (order) => {
   return { sent: true, recipient, orderId: order.orderId, status, trackingLink };
 };
 
+const STORE_WHATSAPP_CONTACTS = ['919566236867', '917530037134'];
+
+const buildOrderConfirmationWhatsAppText = (order) => {
+  const customerName = (order.customer && order.customer.name) || 'Customer';
+  const totalAmount = Number(order.totalAmount || 0);
+  const paymentMethod = (order.payment && order.payment.method) || 'Payment';
+  const orderId = order.orderId || 'N/A';
+  return [
+    `Hello, new order received!`,
+    `Customer: ${customerName}`,
+    `Order ID: ${orderId}`,
+    `Total: ₹${totalAmount}`,
+    `Payment: ${paymentMethod}`,
+    'Please prepare and ship as per the order details.'
+  ].join('\n');
+};
+
+const sendOrderConfirmationWhatsApp = (order) => {
+  const message = buildOrderConfirmationWhatsAppText(order);
+  const contacts = STORE_WHATSAPP_CONTACTS.map((phoneNumber) => ({
+    phone: phoneNumber,
+    url: `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+  }));
+
+  console.log(`[WHATSAPP] Order confirmation message prepared for ${order.orderId}. First link: ${contacts[0]?.url || ''}`);
+  return {
+    sent: true,
+    orderId: order.orderId,
+    contacts
+  };
+};
+
 const getProductPrice = (product) => {
   if (product && product.discountPrice !== null && product.discountPrice !== undefined && Number(product.discountPrice) > 0) {
     return Number(product.discountPrice);
@@ -1379,7 +1411,12 @@ app.post('/api/payments/razorpay/verify', requireUser, async (req, res) => {
 
     const result = markRazorpayOrderPaid(payment);
     const emailStatus = result.alreadyPaid ? undefined : sendOrderConfirmationEmail(result.order);
-    return res.json({ ...result.order, ...(emailStatus ? { emailStatus } : {}) });
+    const whatsappStatus = result.alreadyPaid ? undefined : sendOrderConfirmationWhatsApp(result.order);
+    return res.json({
+      ...result.order,
+      ...(emailStatus ? { emailStatus } : {}),
+      ...(whatsappStatus ? { whatsappStatus } : {})
+    });
   } catch (error) {
     const gatewayError = getRazorpayErrorDetails(error);
     if (process.env.NODE_ENV === 'development') {
@@ -1521,7 +1558,7 @@ app.post('/api/orders', requireUser, (req, res) => {
         status: paymentMethod === 'Cash on Delivery' ? 'Cash on Delivery' : 'Verification Pending',
         rejectionReason: ''
       },
-      orderStatus: paymentMethod === 'Cash on Delivery' ? 'Order Received' : 'Payment Verification Pending',
+      orderStatus: paymentMethod === 'Cash on Delivery' ? 'Confirmed' : 'Payment Verification Pending',
       trackingLink: '',
       createdAt: new Date().toISOString()
     };
@@ -1550,7 +1587,8 @@ app.post('/api/orders', requireUser, (req, res) => {
     writeProducts(productCatalogLatest);
 
     const emailStatus = sendOrderConfirmationEmail(orderRecord);
-    res.status(201).json({ ...normalizeOrder(orderRecord), emailStatus });
+    const whatsappStatus = sendOrderConfirmationWhatsApp(orderRecord);
+    res.status(201).json({ ...normalizeOrder(orderRecord), emailStatus, whatsappStatus });
   } catch (error) {
     res.status(400).json({ message: error.message || 'Unable to create order.' });
   }
