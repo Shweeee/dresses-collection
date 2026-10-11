@@ -28,15 +28,23 @@ const getRazorpayConfig = () => {
   const keySecret = process.env.RAZORPAY_KEY_SECRET?.trim();
 
   if (!keyId || !keySecret) {
-    return null;
+    return {
+      configured: false,
+      message: 'Razorpay is not configured on the backend. Add RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in backend/.env using the values from your Razorpay dashboard.'
+    };
   }
 
   return {
+    configured: true,
     keyId,
     keySecret,
     client: new Razorpay({ key_id: keyId, key_secret: keySecret })
   };
 };
+
+if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+  console.warn('[payment] Razorpay keys missing. Copy backend/.env.example to backend/.env and add your live/test Razorpay keys before enabling payments.');
+}
 
 const getRazorpayErrorDetails = (error) => ({
   errorCode: error?.error?.code || error?.code || 'RAZORPAY_REQUEST_FAILED',
@@ -1223,15 +1231,27 @@ app.get('/api/orders/:orderId', requireAdmin, (req, res) => {
   res.json(normalizeOrder(found));
 });
 
-app.post('/api/payments/razorpay/orders', async (req, res) => {
+app.post('/api/payments/razorpay/orders', requireUser, async (req, res) => {
   const razorpay = getRazorpayConfig();
-  if (!razorpay) {
-    return res.status(503).json({ message: 'Razorpay is not configured on the backend.' });
+  if (!razorpay.configured) {
+    return res.status(503).json({ message: razorpay.message });
   }
 
   try {
     const payload = req.body || {};
-    validateOrderPayload({ ...payload, payment: { method: 'Cash on Delivery' } });
+    const user = req.user;
+    const customer = payload.customer || {};
+    const normalizedCustomer = {
+      name: String(customer.name || user.fullName || user.username || '').trim(),
+      mobile: String(customer.mobile || user.mobile || '').trim(),
+      email: String(customer.email || user.email || '').trim()
+    };
+
+    if (!normalizedCustomer.mobile || normalizedCustomer.mobile !== String(user.mobile || '').trim()) {
+      return res.status(403).json({ message: 'Please login with your registered account and use the mobile number linked to that account.' });
+    }
+
+    validateOrderPayload({ ...payload, customer: normalizedCustomer, payment: { method: 'Cash on Delivery' } });
 
     const totals = calculateOrderTotals(payload.items);
     const amountPaise = Math.round(totals.totalAmount * 100);
@@ -1244,14 +1264,14 @@ app.post('/api/payments/razorpay/orders', async (req, res) => {
       amount: amountPaise,
       currency: 'INR',
       receipt: localOrderId,
-      notes: { local_order_id: localOrderId }
+      notes: { local_order_id: localOrderId, user_id: user.id }
     });
 
     if (Number(gatewayOrder.amount) !== amountPaise || gatewayOrder.currency !== 'INR' || !gatewayOrder.id) {
       throw new Error('Razorpay returned an order with unexpected amount or currency.');
     }
 
-    const orderRecord = buildRazorpayOrderRecord(payload, gatewayOrder.id, totals);
+    const orderRecord = buildRazorpayOrderRecord({ ...payload, customer: normalizedCustomer }, gatewayOrder.id, totals);
     orderRecord.orderId = localOrderId;
     const orders = readOrders();
     orders.push(orderRecord);
@@ -1288,10 +1308,10 @@ app.post('/api/payments/razorpay/orders', async (req, res) => {
   }
 });
 
-app.post('/api/payments/razorpay/verify', async (req, res) => {
+app.post('/api/payments/razorpay/verify', requireUser, async (req, res) => {
   const razorpay = getRazorpayConfig();
-  if (!razorpay) {
-    return res.status(503).json({ message: 'Razorpay is not configured on the backend.' });
+  if (!razorpay.configured) {
+    return res.status(503).json({ message: razorpay.message });
   }
 
   const {
@@ -1382,7 +1402,7 @@ app.post('/api/payments/razorpay/verify', async (req, res) => {
 app.post('/api/payments/razorpay/webhook', (req, res) => {
   const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET?.trim();
   if (!webhookSecret) {
-    return res.status(503).json({ message: 'Razorpay webhook is not configured on the backend.' });
+    return res.status(503).json({ message: 'Razorpay webhook is not configured on the backend. Set RAZORPAY_WEBHOOK_SECRET in backend/.env with the value from the Razorpay dashboard.' });
   }
 
   const rawBody = req.body;
@@ -1436,14 +1456,27 @@ app.post('/api/payments/razorpay/webhook', (req, res) => {
   }
 });
 
-app.post('/api/orders', (req, res) => {
+app.post('/api/orders', requireUser, (req, res) => {
   try {
     const payload = req.body || {};
-    const paymentMethod = validateOrderPayload(payload);
+    const user = req.user;
+    const customer = payload.customer || {};
+    const normalizedCustomer = {
+      name: String(customer.name || user.fullName || user.username || '').trim(),
+      mobile: String(customer.mobile || user.mobile || '').trim(),
+      email: String(customer.email || user.email || '').trim()
+    };
 
-    const totals = calculateOrderTotals(payload.items);
+    if (!normalizedCustomer.mobile || normalizedCustomer.mobile !== String(user.mobile || '').trim()) {
+      return res.status(403).json({ message: 'Please login with your registered account and use the mobile number linked to that account.' });
+    }
+
+    const safePayload = { ...payload, customer: normalizedCustomer };
+    const paymentMethod = validateOrderPayload(safePayload);
+
+    const totals = calculateOrderTotals(safePayload.items);
     const productCatalog = readProducts();
-    const normalizedItems = payload.items.map((item) => {
+    const normalizedItems = safePayload.items.map((item) => {
       const product = productCatalog.find((entry) => String(entry.id) === String(item.productId));
       return {
         productId: String(item.productId),
@@ -1457,7 +1490,7 @@ app.post('/api/orders', (req, res) => {
 
     const existingOrders = readOrders();
 
-    if (payload.payment?.utrNumber && duplicateUtrExists(existingOrders, '', payload.payment.utrNumber)) {
+    if (safePayload.payment?.utrNumber && duplicateUtrExists(existingOrders, '', safePayload.payment.utrNumber)) {
       return res.status(409).json({ message: 'This UTR number has already been used for another order.' });
     }
 

@@ -8,5 +8,15 @@
     "mobile": "9344780735",
     "createdAt": "2026-09-20T13:46:05.803Z",
     "updatedAt": "2026-09-20T13:46:05.803Z"
+  },
+  {
+    "id": "USR-CHU3UFQB",
+    "username": "Muruganuma",
+    "passwordHash": "153faad2b96d8bf36eae8cb5e671db68f2db22bf9e049724cf4e2fc4140dbed9",
+    "email": "swethamurugan056@gmail.com",
+    "fullName": "usdbshd",
+    "mobile": "9344780735",
+    "createdAt": "2026-10-11T08:03:16.012Z",
+    "updatedAt": "2026-10-11T08:03:16.012Z"
   }
 ]

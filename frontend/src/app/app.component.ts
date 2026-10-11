@@ -803,6 +803,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   proceedToPayment() {
+    if (!this.currentUser || !this.authToken) {
+      this.showToast('Please register and login before placing an order.');
+      this.currentView = 'orders';
+      return;
+    }
+
     if (!this.isCheckoutFormValid()) {
       return;
     }
@@ -816,6 +822,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   startRazorpayPayment() {
+    if (!this.currentUser || !this.authToken) {
+      this.showToast('Please register and login before placing an order.');
+      this.currentView = 'orders';
+      return;
+    }
+
     if (this.isRazorpayLoading || !this.isCheckoutFormValid()) {
       return;
     }
@@ -843,7 +855,7 @@ export class AppComponent implements OnInit, OnDestroy {
       }))
     };
 
-    this.http.post<RazorpayOrderResponse>(`${this.apiBaseUrl}/api/payments/razorpay/orders`, payload).subscribe({
+    this.http.post<RazorpayOrderResponse>(`${this.apiBaseUrl}/api/payments/razorpay/orders`, payload, { headers: this.getUserHeaders() }).subscribe({
       next: async (gatewayOrder) => {
         try {
           await this.loadRazorpayCheckout();
@@ -962,7 +974,8 @@ export class AppComponent implements OnInit, OnDestroy {
         razorpay_order_id: payment.razorpay_order_id,
         razorpay_payment_id: payment.razorpay_payment_id,
         razorpay_signature: payment.razorpay_signature
-      }
+      },
+      { headers: this.getUserHeaders() }
     ).subscribe({
       next: (order) => {
         this.isRazorpayLoading = false;
@@ -1089,7 +1102,13 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     };
 
-    this.http.post<OrderResponse & { emailStatus?: { sent: boolean; recipient?: string } }>(`${this.apiBaseUrl}/api/orders`, payload).subscribe({
+    if (!this.currentUser || !this.authToken) {
+      this.showToast('Please register and login before placing an order.');
+      this.currentView = 'orders';
+      return;
+    }
+
+    this.http.post<OrderResponse & { emailStatus?: { sent: boolean; recipient?: string } }>(`${this.apiBaseUrl}/api/orders`, payload, { headers: this.getUserHeaders() }).subscribe({
       next: (createdOrder) => {
         this.handleOrderPlaced(createdOrder);
       },
