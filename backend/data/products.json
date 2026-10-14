@@ -1092,7 +1092,13 @@
     "sizes": [
       "Free Size"
     ],
-    "colors": [],
+    "colors": [
+      "Black with Red",
+      "Blue with Pink",
+      "Yellow with Pink",
+      "Red with Blue",
+      "Brown with Orange"
+    ],
     "details": {
       "lehengaFabric": "Fully stitched Kanjivaram silk with big Jacquard border and canvas patta",
       "lehengaLength": "42 inches",
