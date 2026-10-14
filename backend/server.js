@@ -278,6 +278,7 @@ const normalizeProduct = (product = {}) => {
     description: String(product.description || ''),
     price,
     discountPrice,
+    freeShipping: Boolean(product.freeShipping),
     stock: Number(product.stock || 0),
     sku: String(product.sku || ''),
     images,
@@ -568,7 +569,7 @@ const normalizeOrder = (order) => {
     address,
     items,
     subtotal: Number(order.subtotal || 0),
-    deliveryCharge: Number(order.deliveryCharge || DELIVERY_CHARGE),
+    deliveryCharge: Number(order.deliveryCharge ?? DELIVERY_CHARGE),
     totalAmount: Number(order.totalAmount || 0),
     payment: {
       method: payment.method || 'UPI / GPay',
@@ -663,10 +664,15 @@ const validateOrderPayload = (payload) => {
 
 const calculateOrderTotals = (items) => {
   const productCatalog = readProducts();
+  let deliveryCharge = 0;
   const subtotal = items.reduce((sum, item) => {
     const product = productCatalog.find((entry) => String(entry.id) === String(item.productId));
     if (!product) {
       throw new Error(`Product not found for item ${item.productId}`);
+    }
+
+    if (!product.freeShipping) {
+      deliveryCharge = DELIVERY_CHARGE;
     }
 
     return sum + getProductPrice(product) * item.quantity;
@@ -674,8 +680,8 @@ const calculateOrderTotals = (items) => {
 
   return {
     subtotal,
-    deliveryCharge: DELIVERY_CHARGE,
-    totalAmount: subtotal + DELIVERY_CHARGE
+    deliveryCharge,
+    totalAmount: subtotal + deliveryCharge
   };
 };
 
@@ -906,6 +912,7 @@ const buildProductPayload = (payload) => {
     description: trimmedDescription,
     price: Number(payload.price),
     discountPrice: payload.discountPrice !== undefined && payload.discountPrice !== null && payload.discountPrice !== '' ? Number(payload.discountPrice) : null,
+    freeShipping: Boolean(payload.freeShipping || String(payload.details?.shipping || '').toLowerCase().includes('free shipping')),
     stock: Number(payload.stock),
     sku: trimmedSku,
     images: saveImages(Array.isArray(payload.images) ? payload.images : []),

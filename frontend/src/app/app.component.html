@@ -111,6 +111,8 @@
                 <div class="card-body">
                   <div class="card-header">
                     <span class="category-pill">{{ product.category }}</span>
+                    <span *ngIf="product.details['collectionLabel']" class="category-pill">{{ product.details['collectionLabel'] }}</span>
+                    <span *ngIf="product.freeShipping" class="category-pill">Free Shipping</span>
                     <span class="stock-pill" [class.out-of-stock]="product.stock === 0">{{ product.stock > 0 ? 'In Stock' : 'Out of Stock' }}</span>
                   </div>
                   <h3>{{ product.name }}</h3>
@@ -159,6 +161,8 @@
             </div>
             <div class="detail-copy">
               <span class="category-pill">{{ selectedProduct.category }}</span>
+              <span *ngIf="selectedProduct.details['collectionLabel']" class="category-pill">{{ selectedProduct.details['collectionLabel'] }}</span>
+              <span *ngIf="selectedProduct.freeShipping" class="category-pill">Free Shipping</span>
               <h3>{{ selectedProduct.name }}</h3>
               <ng-container *ngIf="hasProductPrice(selectedProduct); else detailPriceToConfirm">
                 <div class="price-block detail-price-block" *ngIf="hasProductDiscount(selectedProduct); else regularDetailPrice">
@@ -207,7 +211,7 @@
                 </div>
               </div>
 
-              <div class="color-options" *ngIf="selectedProduct.colors?.length">
+              <div class="color-options" *ngIf="selectedProduct.colors.length">
                 <span class="color-label">Available colors</span>
                 <div class="color-swatches">
                   <button
@@ -321,7 +325,7 @@
                   <strong>₹{{ cartSubtotal }}</strong>
                 </div>
                 <div class="total-row">
-                  <span>Delivery Charge</span>
+                  <span>{{ deliveryCharge === 0 ? 'Free Shipping' : 'Delivery Charge' }}</span>
                   <strong>₹{{ deliveryCharge }}</strong>
                 </div>
                 <div class="total-row final-total">

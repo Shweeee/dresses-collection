@@ -1247,5 +1247,53 @@
     },
     "createdAt": "2026-09-27T17:22:44.000Z",
     "updatedAt": "2026-09-27T17:22:44.000Z"
+  },
+  {
+    "id": "PROD-033",
+    "name": "HOV's Festive Stunner - Kashvi 🪷",
+    "category": "Gowns",
+    "description": "HOV's Festive Stunner - Kashvi is all set to make you look great at celebrations. Rich Fendi crush creates a luxurious flow. Delicate handwork adds graceful festive elegance. The layered flare gives beautiful volume and movement, while a butterfly net dupatta completes the royal look. Tailored with Passion, worn with Love.",
+    "price": 1999,
+    "discountPrice": null,
+    "stock": 50,
+    "sku": "GWN-033",
+    "images": [
+      "/uploads/products/product-33/WhatsApp Image 2026-10-14 at 8.19.58 AM.jpeg",
+      "/uploads/products/product-33/WhatsApp Image 2026-10-14 at 8.19.58 AM (1).jpeg",
+      "/uploads/products/product-33/WhatsApp Image 2026-10-14 at 8.19.58 AM (2).jpeg",
+      "/uploads/products/product-33/WhatsApp Image 2026-10-14 at 8.19.59 AM.jpeg",
+      "/uploads/products/product-33/WhatsApp Image 2026-10-14 at 8.19.59 AM (1).jpeg",
+      "/uploads/products/product-33/WhatsApp Image 2026-10-14 at 8.19.59 AM (2).jpeg",
+      "/uploads/products/product-33/WhatsApp Image 2026-10-14 at 8.19.59 AM (3).jpeg",
+      "/uploads/products/product-33/WhatsApp Image 2026-10-14 at 8.20.00 AM.jpeg",
+      "/uploads/products/product-33/WhatsApp Image 2026-10-14 at 8.20.00 AM (1).jpeg",
+      "/uploads/products/product-33/WhatsApp Image 2026-10-14 at 8.20.01 AM.jpeg",
+      "/uploads/products/product-33/WhatsApp Image 2026-10-14 at 8.20.01 AM (1).jpeg",
+      "/uploads/products/product-33/WhatsApp Image 2026-10-14 at 8.20.03 AM.jpeg"
+    ],
+    "sizes": [
+      "M (38)",
+      "L (40)",
+      "XL (42)",
+      "XXL (44)"
+    ],
+    "colors": [
+      "Red",
+      "Blue"
+    ],
+    "freeShipping": true,
+    "details": {
+      "collectionLabel": "Trending Collection",
+      "fabric": "Fendi crush",
+      "dupattaFabric": "Butterfly net",
+      "work": "Delicate handwork",
+      "flare": "Two-layered flare for added volume",
+      "highlight": "Perfect festive and occasion-ready vibe",
+      "length": "50 inches",
+      "weight": "700 grams",
+      "shipping": "Free shipping"
+    },
+    "createdAt": "2026-10-14T08:20:03.000Z",
+    "updatedAt": "2026-10-14T08:20:03.000Z"
   }
 ]

@@ -10,6 +10,7 @@ interface Product {
   description: string;
   price: number;
   discountPrice: number | null;
+  freeShipping: boolean;
   stock: number;
   sku: string;
   images: string[];
@@ -320,7 +321,7 @@ export class AppComponent implements OnInit, OnDestroy {
   readonly upiId = 'mswetha044@okicici';
   readonly upiName = 'Swetha';
   readonly paymentQrImage = `${this.apiBaseUrl}/uploads/scanner.jpeg`;
-  readonly deliveryCharge = 99;
+  readonly standardDeliveryCharge = 99;
   readonly categoryDetailsFields = CATEGORY_DETAILS_FIELDS;
 
   constructor(private http: HttpClient) {}
@@ -542,7 +543,7 @@ export class AppComponent implements OnInit, OnDestroy {
       address,
       items,
       subtotal: Number(order.subtotal || 0),
-      deliveryCharge: Number(order.deliveryCharge || this.deliveryCharge),
+      deliveryCharge: Number(order.deliveryCharge ?? this.standardDeliveryCharge),
       totalAmount: Number(order.totalAmount || 0),
       payment: {
         method: payment.method || order.paymentMethod || 'UPI / GPay',
@@ -560,6 +561,12 @@ export class AppComponent implements OnInit, OnDestroy {
 
   get cartSubtotal(): number {
     return this.cart.reduce((sum, item) => sum + this.getProductDisplayPrice(item.product) * item.quantity, 0);
+  }
+
+  get deliveryCharge(): number {
+    return this.cart.length > 0 && this.cart.every((item) => item.product.freeShipping)
+      ? 0
+      : this.standardDeliveryCharge;
   }
 
   get finalAmount(): number {
