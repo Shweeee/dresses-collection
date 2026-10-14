@@ -708,7 +708,9 @@ const buildRazorpayOrderRecord = (payload, gatewayOrderId, totals) => {
       quantity: item.quantity,
       price: getProductPrice(product),
       selectedSize: item.selectedSize || '',
-      selectedColor: item.selectedColor || ''
+      selectedColor: item.selectedColor || '',
+      selectedMenShirtSize: item.selectedMenShirtSize || '',
+      selectedMenPantSize: item.selectedMenPantSize || ''
     };
   });
 
@@ -1521,7 +1523,9 @@ app.post('/api/orders', requireUser, (req, res) => {
         quantity: item.quantity,
         price: getProductPrice(product),
         selectedSize: item.selectedSize || '',
-        selectedColor: item.selectedColor || ''
+        selectedColor: item.selectedColor || '',
+        selectedMenShirtSize: item.selectedMenShirtSize || '',
+        selectedMenPantSize: item.selectedMenPantSize || ''
       };
     });
 

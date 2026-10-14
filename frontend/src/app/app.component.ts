@@ -40,6 +40,8 @@ interface CartItem {
   quantity: number;
   selectedSize?: string;
   selectedColor?: string;
+  selectedMenShirtSize?: string;
+  selectedMenPantSize?: string;
 }
 
 interface OrderCustomer {
@@ -64,6 +66,8 @@ interface OrderItem {
   price: number;
   selectedSize?: string;
   selectedColor?: string;
+  selectedMenShirtSize?: string;
+  selectedMenPantSize?: string;
 }
 
 interface OrderPayment {
@@ -264,6 +268,8 @@ export class AppComponent implements OnInit, OnDestroy {
   orderConfirmationWhatsAppUrl = '';
   selectedSize = '';
   selectedColor = '';
+  selectedMenShirtSize = '';
+  selectedMenPantSize = '';
   quantity = 1;
   authMode: 'login' | 'register' = 'login';
   currentUser: UserAccount | null = null;
@@ -590,6 +596,14 @@ export class AppComponent implements OnInit, OnDestroy {
     return product.discountPrice !== null && product.discountPrice !== undefined && Number(product.discountPrice) > 0 && Number(product.discountPrice) < Number(product.price);
   }
 
+  getMenSizeOptions(product: Product, type: 'menShirtSizes' | 'menPantSizes'): string[] {
+    return (product.details?.[type] || '').split(',').map((size) => size.trim()).filter(Boolean);
+  }
+
+  hasMenSizeOptions(product: Product): boolean {
+    return this.getMenSizeOptions(product, 'menShirtSizes').length > 0 || this.getMenSizeOptions(product, 'menPantSizes').length > 0;
+  }
+
   getProductsForCategory(category: string): Product[] {
     return this.products.filter((product) => product.category === category);
   }
@@ -658,6 +672,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.selectedProduct = product;
     this.selectedSize = product.sizes?.[0] ?? '';
     this.selectedColor = product.colors?.[0] ?? '';
+    this.selectedMenShirtSize = '';
+    this.selectedMenPantSize = '';
     if (this.selectedProduct.details && this.selectedColor) {
       this.selectedProduct.details['color'] = this.selectedColor;
     }
@@ -678,6 +694,16 @@ export class AppComponent implements OnInit, OnDestroy {
       return;
     }
 
+    if (this.getMenSizeOptions(product, 'menShirtSizes').length && !this.selectedMenShirtSize) {
+      this.showToast("Please select the men's shirt size.");
+      return;
+    }
+
+    if (this.getMenSizeOptions(product, 'menPantSizes').length && !this.selectedMenPantSize) {
+      this.showToast("Please select the men's pant size.");
+      return;
+    }
+
     const requestedQuantity = Math.max(1, Math.min(Number(this.quantity) || 1, product.stock));
 
     if (requestedQuantity > product.stock) {
@@ -689,7 +715,9 @@ export class AppComponent implements OnInit, OnDestroy {
       (item) =>
         item.product.id === product.id &&
         item.selectedSize === this.selectedSize &&
-        item.selectedColor === this.selectedColor
+        item.selectedColor === this.selectedColor &&
+        item.selectedMenShirtSize === this.selectedMenShirtSize &&
+        item.selectedMenPantSize === this.selectedMenPantSize
     );
 
     if (existingItem) {
@@ -704,7 +732,9 @@ export class AppComponent implements OnInit, OnDestroy {
         product,
         quantity: requestedQuantity,
         selectedSize: product.sizes?.length ? this.selectedSize : undefined,
-        selectedColor: product.colors?.length ? this.selectedColor : undefined
+        selectedColor: product.colors?.length ? this.selectedColor : undefined,
+        selectedMenShirtSize: this.selectedMenShirtSize || undefined,
+        selectedMenPantSize: this.selectedMenPantSize || undefined
       });
     }
 
@@ -714,6 +744,11 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   addToCartFromCard(product: Product) {
+    if (this.hasMenSizeOptions(product)) {
+      this.openProductDetails(product);
+      return;
+    }
+
     this.selectedSize = product.sizes?.[0] ?? '';
     this.selectedColor = product.colors?.[0] ?? '';
     this.quantity = 1;
@@ -852,7 +887,9 @@ export class AppComponent implements OnInit, OnDestroy {
         productId: item.product.id,
         quantity: item.quantity,
         selectedSize: item.selectedSize || '',
-        selectedColor: item.selectedColor || ''
+        selectedColor: item.selectedColor || '',
+        selectedMenShirtSize: item.selectedMenShirtSize || '',
+        selectedMenPantSize: item.selectedMenPantSize || ''
       }))
     };
 
@@ -1091,7 +1128,9 @@ export class AppComponent implements OnInit, OnDestroy {
         quantity: item.quantity,
         price: this.getProductDisplayPrice(item.product),
         selectedSize: item.selectedSize || '',
-        selectedColor: item.selectedColor || ''
+        selectedColor: item.selectedColor || '',
+        selectedMenShirtSize: item.selectedMenShirtSize || '',
+        selectedMenPantSize: item.selectedMenPantSize || ''
       })),
       subtotal: this.cartSubtotal,
       deliveryCharge: this.deliveryCharge,

@@ -129,7 +129,7 @@
                   <p class="meta">Sizes: {{ product.sizes.join(', ') }}</p>
                   <p class="meta">Colors: {{ product.colors.join(', ') }}</p>
                   <div class="card-actions">
-                    <button class="primary" [disabled]="!hasProductPrice(product)" (click)="addToCartFromCard(product)">Add to Cart</button>
+                    <button class="primary" [disabled]="!hasProductPrice(product)" (click)="addToCartFromCard(product)">{{ hasMenSizeOptions(product) ? 'Choose Sizes' : 'Add to Cart' }}</button>
                     <button class="secondary" (click)="openProductDetails(product)">View Details</button>
                   </div>
                 </div>
@@ -190,6 +190,20 @@
                 <div>
                   <label>Quantity</label>
                   <input type="number" min="1" [(ngModel)]="quantity" />
+                </div>
+                <div *ngIf="getMenSizeOptions(selectedProduct, 'menShirtSizes').length">
+                  <label>Men's Shirt Size</label>
+                  <select [(ngModel)]="selectedMenShirtSize">
+                    <option value="">Select shirt size</option>
+                    <option *ngFor="let size of getMenSizeOptions(selectedProduct, 'menShirtSizes')" [value]="size">{{ size }}</option>
+                  </select>
+                </div>
+                <div *ngIf="getMenSizeOptions(selectedProduct, 'menPantSizes').length">
+                  <label>Men's Pant Waist Size (inches)</label>
+                  <select [(ngModel)]="selectedMenPantSize">
+                    <option value="">Select pant size</option>
+                    <option *ngFor="let size of getMenSizeOptions(selectedProduct, 'menPantSizes')" [value]="size">{{ size }}</option>
+                  </select>
                 </div>
               </div>
 
@@ -295,6 +309,7 @@
                       <span>₹{{ getProductDisplayPrice(item.product) * item.quantity }}</span>
                     </div>
                     <p>Size: {{ item.selectedSize || 'N/A' }} | Color: {{ item.selectedColor || 'N/A' }}</p>
+                    <p *ngIf="item.selectedMenShirtSize || item.selectedMenPantSize">Men's shirt: {{ item.selectedMenShirtSize || 'N/A' }} | Men's pant: {{ item.selectedMenPantSize || 'N/A' }}</p>
                     <p>Qty: {{ item.quantity }} | Price: ₹{{ getProductDisplayPrice(item.product) }}</p>
                   </div>
                 </div>
@@ -378,8 +393,9 @@
                 <div>
                   <h4>{{ item.product.name }}</h4>
                   <p>{{ item.selectedSize || '' }} {{ item.selectedColor || '' }}</p>
+                  <p *ngIf="item.selectedMenShirtSize || item.selectedMenPantSize">Men's shirt {{ item.selectedMenShirtSize || 'N/A' }} / pant {{ item.selectedMenPantSize || 'N/A' }}</p>
                 </div>
-                <strong>₹{{ item.product.price * item.quantity }}</strong>
+                <strong>₹{{ getProductDisplayPrice(item.product) * item.quantity }}</strong>
               </div>
               <div class="cart-controls">
                 <button type="button" (click)="changeQuantity(item, -1)">-</button>
