@@ -106,7 +106,7 @@
     "colors": [
       "Blue",
       "Maroon",
-      "Red",
+      "Brown",
       "Lavender"
     ],
     "details": {
@@ -246,8 +246,8 @@
     "name": "Signature Series Cape Top with Skirt & Dupatta",
     "category": "Traditional Wear",
     "description": "Unveiling our stunning cape top in radiant colours, paired with a skirt and dupatta for wedding functions, parties, and festive celebrations. This standout ensemble delivers elegance and comfort for any special occasion.",
-    "price": 15199,
-    "discountPrice": 14999,
+    "price": 1799,
+    "discountPrice": 1499,
     "stock": 50,
     "sku": "TRD-010",
     "images": [
@@ -554,7 +554,7 @@
     "colors": [
       "Deep Wine",
       "Lavendar",
-      "Sky Blue",
+       "Sky Blue",
       "Peach Pink"
     ],
     "details": {
@@ -844,46 +844,7 @@
     "createdAt": "2026-09-27T16:28:16.000Z",
     "updatedAt": "2026-09-27T16:28:16.000Z"
   },
-  {
-    "id": "PROD-024",
-    "name": "Girls Floral Organza Party Dress",
-    "category": "Gowns",
-    "description": "A dreamy floral dress for your little fashionista, designed with a flared princess fit for birthdays, weddings, and special occasions.",
-    "price": 1199,
-    "discountPrice": 999,
-    "stock": 50,
-    "sku": "GWN-024",
-    "images": [
-      "http://localhost:3000/uploads/products/product-24/WhatsApp Image 2026-09-27 at 4.33.38 PM (1).jpeg",
-      "http://localhost:3000/uploads/products/product-24/WhatsApp Image 2026-09-27 at 4.33.38 PM.jpeg",
-      "http://localhost:3000/uploads/products/product-24/WhatsApp Image 2026-09-27 at 4.33.39 PM.jpeg"
-    ],
-    "image": "http://localhost:3000/uploads/products/product-24/WhatsApp Image 2026-09-27 at 4.33.38 PM (1).jpeg",
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL",
-      "XXXL"
-    ],
-    "colors": [
-      "Pink",
-      "Purple",
-      "Yellow"
-    ],
-    "details": {
-      "outerFabric": "Premium floral organza",
-      "innerFabric": "Soft satin inner",
-      "neckline": "Collar neck",
-      "sleeves": "Puff sleeves",
-      "fit": "Flared princess fit",
-      "occasion": "Birthdays, weddings, and special occasions",
-      "price": "999 + shipping"
-    },
-    "createdAt": "2026-09-27T16:33:38.000Z",
-    "updatedAt": "2026-09-27T16:33:38.000Z"
-  },
+
   {
     "id": "PROD-025",
     "name": "Couple Combo with Heavy Space Silk Lehenga Choli",
@@ -1142,7 +1103,7 @@
     ],
     "colors": [
       "Purple",
-      "Light Pink",
+      "Lavendar",
       "Grey",
       "Light Blue",
       "Light Green",
@@ -1190,9 +1151,11 @@
     ],
     "colors": [
       "Purple",
-      "Blue",
-      "Green",
-      "Red"
+       "Green",
+        "Red",
+      "Blue"
+
+
     ],
     "details": {
       "lehengaFabric": "Pure heavy Lichi silk with all-over zari weaving and contrast heavy zari border",

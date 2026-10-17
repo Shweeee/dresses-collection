@@ -18,7 +18,7 @@
         </div>
       </div>
       <button (click)="navigateTo('orders')">My Orders</button>
-      <button *ngIf="adminAuthenticated || adminAccessVisible" type="button" (click)="openAdminAccess()">Admin</button>
+      <button type="button" (click)="openAdminAccess()">Admin</button>
     </nav>
 
     <div class="header-actions" *ngIf="products.length">
@@ -39,41 +39,42 @@
   <main class="page-content">
     <div *ngIf="toastMessage" class="toast-notification">{{ toastMessage }}</div>
 
-    <section *ngIf="currentView === 'home'" class="hero-section">
-      <div class="hero-copy">
-        <span class="eyebrow">New Arrival</span>
-        <h2>Dress up every moment beautifully.</h2>
-        <p class="hero-subtitle">
-          Discover elegant sarees, graceful gowns, festive lehengas, and everyday essentials designed for celebrations, comfort, and confidence.
-        </p>
-        <div class="hero-actions">
-          <button class="primary" (click)="navigateTo('products')">Shop Now</button>
-        </div>
-        <div class="home-contact-links">
-          <a class="whatsapp-button" href="https://wa.me/919566236867" target="_blank" rel="noopener noreferrer">WhatsApp 9566236867</a>
-          <a class="whatsapp-button secondary-whatsapp" href="https://wa.me/917530037134" target="_blank" rel="noopener noreferrer">WhatsApp 7530037134</a>
-        </div>
+    <section *ngIf="currentView === 'home'" class="home-trending">
+      <div class="home-trending-heading">
+        <h2>Trending Dresses</h2>
       </div>
-      <div class="hero-visual">
-        <img [src]="homeFeatureImage" alt="Dress collection" />
+      <div class="product-grid">
+        <article class="product-card" *ngFor="let product of getProductsForCategory('Gowns')">
+          <img [src]="product.image" [alt]="product.name" />
+          <div class="card-body">
+            <div class="card-header">
+              <span class="category-pill">Trending Dress</span>
+              <span class="stock-pill" [class.out-of-stock]="product.stock === 0">{{ product.stock > 0 ? 'In Stock' : 'Out of Stock' }}</span>
+            </div>
+            <h3>{{ product.name }}</h3>
+            <ng-container *ngIf="hasProductPrice(product); else trendingPriceToConfirm">
+              <div class="price-block" *ngIf="hasProductDiscount(product); else trendingRegularPrice">
+                <span class="discount-price">₹{{ getProductDisplayPrice(product) }}</span>
+                <span class="original-price">₹{{ getOriginalProductPrice(product) }}</span>
+              </div>
+              <ng-template #trendingRegularPrice>
+                <span class="discount-price">₹{{ product.price }}</span>
+              </ng-template>
+            </ng-container>
+            <ng-template #trendingPriceToConfirm>
+              <p class="meta">Price to be confirmed</p>
+            </ng-template>
+            <p class="meta">Sizes: {{ product.sizes.join(', ') }}</p>
+            <div class="card-actions">
+              <button class="primary" [disabled]="!hasProductPrice(product)" (click)="addToCartFromCard(product)">Add to Cart</button>
+              <button class="secondary" (click)="openProductDetails(product)">View Details</button>
+            </div>
+          </div>
+        </article>
       </div>
-    </section>
-
-    <section *ngIf="currentView === 'home'" class="home-categories">
-      <div class="home-categories-heading">
-        <h2>Shop by Category</h2>
-        <button type="button" class="text-button" (click)="filterByCategory('All Products')">View all products</button>
-      </div>
-      <div class="home-category-grid">
-        <button
-          type="button"
-          class="home-category-link"
-          *ngFor="let category of categories"
-          (click)="filterByCategory(category)"
-        >
-          <img [src]="getCategoryImage(category)" [alt]="category" [class.home-saree-image]="category === 'Sarees'" />
-          <span>{{ category }}</span>
-        </button>
+      <div class="home-contact-links">
+        <a class="whatsapp-button" href="https://wa.me/919566236867" target="_blank" rel="noopener noreferrer">WhatsApp 9566236867</a>
+        <a class="whatsapp-button secondary-whatsapp" href="https://wa.me/917530037134" target="_blank" rel="noopener noreferrer">WhatsApp 7530037134</a>
       </div>
     </section>
 

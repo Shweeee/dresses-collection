@@ -18,8 +18,8 @@ const DUMMY_UPI_ID = 'mswetha044@okicici';
 const DELIVERY_CHARGE = 99;
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 const AUTH_TOKEN_TTL_MS = 1000 * 60 * 60 * 12;
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'Muruganuma';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'Muruganuma@20';
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME?.trim();
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const ADMIN_TOKEN_STORAGE = new Map();
 const USER_TOKEN_STORAGE = new Map();
 
@@ -1063,6 +1063,10 @@ app.post('/api/users/login', (req, res) => {
 app.post('/api/admin/login', (req, res) => {
   try {
     const { username, password } = req.body || {};
+
+    if (!ADMIN_USERNAME || !ADMIN_PASSWORD) {
+      return res.status(503).json({ message: 'Admin access is not configured.' });
+    }
 
     if (username !== ADMIN_USERNAME || password !== ADMIN_PASSWORD) {
       return res.status(401).json({ message: 'Invalid admin credentials.' });

@@ -1,4 +1,4 @@
-﻿import { Component, isDevMode, OnDestroy, OnInit } from '@angular/core';
+﻿import { Component, HostListener, isDevMode, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -326,9 +326,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private http: HttpClient) {}
 
+  @HostListener('window:hashchange')
+  onHashChange(): void {
+    this.syncAdminHashState();
+  }
+
   ngOnInit(): void {
-    this.adminAccessVisible = false;
     this.restoreSession();
+    this.syncAdminHashState();
     this.loadProducts();
     this.loadCategories();
     if (this.currentUser && this.authToken) {
@@ -1320,9 +1325,25 @@ export class AppComponent implements OnInit, OnDestroy {
     return (order.items || []).map((item) => `${item.name} x ${item.quantity}`).join(', ');
   }
 
+  private syncAdminHashState(): void {
+    const adminHash = (window.location.hash || '').toLowerCase();
+    const isAdminPage = adminHash.includes('admin');
+
+    if (this.adminAuthenticated) {
+      this.adminAccessVisible = true;
+      return;
+    }
+
+    this.adminAccessVisible = isAdminPage;
+    if (!isAdminPage) {
+      this.adminError = '';
+    }
+  }
+
   openAdminAccess() {
     this.currentView = 'orders';
     this.selectedProduct = null;
+    window.location.hash = 'admin';
 
     if (this.adminAuthenticated) {
       this.adminAccessVisible = true;
@@ -1330,7 +1351,7 @@ export class AppComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.adminAccessVisible = false;
+    this.adminAccessVisible = true;
     this.adminError = '';
     this.showToast('Admin access is restricted to admins only.');
   }
